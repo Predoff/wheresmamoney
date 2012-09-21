@@ -11,7 +11,50 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921172737) do
+ActiveRecord::Schema.define(:version => 20120921183832) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "incomes", :force => true do |t|
+    t.float    "value"
+    t.date     "date"
+    t.text     "description"
+    t.integer  "source_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "outgoes_tags", :force => true do |t|
+    t.integer "outgoes_id"
+    t.integer "tags_id"
+  end
+
+  create_table "outgos", :force => true do |t|
+    t.float    "value"
+    t.date     "date"
+    t.text     "description"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "sources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
