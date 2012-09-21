@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  value: MyString
+  float: MyString
+  date: 2012-09-21
+  description: MyText
+  category_id: 1
+  user_id: 1
+
+two:
+  value: MyString
+  float: MyString
+  date: 2012-09-21
+  description: MyText
+  category_id: 1
+  user_id: 1

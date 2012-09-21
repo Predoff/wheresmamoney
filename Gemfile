@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'haml'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'twitter-bootstrap-rails'
