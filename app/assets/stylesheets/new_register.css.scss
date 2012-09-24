@@ -15,19 +15,26 @@
 		width: 50px;
 	}
 
-	select{
+	select {
 		width: 100%;
 	}
 
-	.chzn-choices {
-
+	textarea {
+		margin-bottom: 9px;
+		max-width: 150px;
+		min-width: 150px;
+		min-height: 20px;
+		width: 150px;
 	}
+
 	.entry {
 		float: left;
 		width: 165px;
 	}
 
 	.form-actions {
+		clear: both;
+
 		.btn {
 			width: 93px;
 		}
@@ -56,5 +63,6 @@
 }
 
 .select2-container {
+	margin-bottom: 9px;
 	width: 165px;
 }

@@ -31,7 +31,17 @@
 
 /* Content related classes and id's */
 
-#container {
+body{
+	padding: 0;
+}
+
+h2 {
+	font-size: 18px;
+	line-height: 100%;
+	margin: 5px 0 15px 5px;
+}
+
+.container {
 	margin: 0 auto;
 	width: 940px;
 }

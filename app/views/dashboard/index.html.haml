@@ -1,5 +1,24 @@
-#container.clearfix
+#header.clearfix
+  .container
+    %h1 Wherezmamoney?!
+    .btn-group.user-menu
+      %a.btn{ href: '#' }
+        %i.icon-user.icon-white
+        = @user.name
+      %a.btn.dropdown-toggle{ :'data-toggle' => 'dropdown', :href => '#' }
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{ href: '#' }
+            %i.icon-cog
+            Configurações
+        %li.divider
+        %li
+          %a{ href: '#' } Sair
+
+#container.container.clearfix
   #new_register_container
+    %h2 Novo Registro
     %ul.nav.nav-tabs
       %li#outgoes_tab.active
         %a{ :'data-url' => new_outgo_url } Gastos
@@ -25,14 +44,15 @@
           .entry
             %select{ name: 'category' }
               - @categories.each do |category|
-                %option= category
+                %option{ value: "#{category.id}" }= category.name
 
         %label{ for: 'tag' } Tags
         .entry
           %input.tags.beautiful-box{ name: 'tags', type: 'hidden', data: {tags: @tags} }
             
         %label{ for: 'description' } Descrição
-        %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
+        .entry
+          %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
 
         .form-actions
           %input.btn.btn-primary{ type: 'submit', value: 'Save' }
@@ -60,13 +80,15 @@
                 %option Opção
 
         %label{ for: 'description' } Descrição
-        %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
+        .entry
+          %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
 
         .form-actions
           %input.btn.btn-primary{ type: 'submit', value: 'Save' }
           %input.btn{ type: 'reset', value: 'Clean' }
 
   #summary_container
+    %h2 Extratos
     %ul.nav.nav-tabs
       %li.active
         %a Recente
@@ -88,7 +110,7 @@
             = radio_button_tag :show, :option2
             Ganhos
           %label.radio{ for: 'show_option3'}  
-            = radio_button_tag :show, :option3
+            = radio_button_tag :show, :option3, checked: 'checked'
             Ambos
 
       %h4 Movimentações Recentes
