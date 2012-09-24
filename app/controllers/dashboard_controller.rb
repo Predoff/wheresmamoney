@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
-  	@categories = Category.all.map { |category| category.name }
-  	@tags = Tag.all.map { |tag| tag.name }
+  	@categories = Category.where(user_id: 1).map { |category| category.name }
+  	@tags = Tag.where(user_id: 1).map { |tag| tag.name }
   end
 end
