@@ -24,14 +24,13 @@
           %label{ for: 'category' } Categoria
           .entry
             %select{ name: 'category' }
-              - 5.times do
-                %option Opção
+              - @categories.each do |category|
+                %option= category
 
         %label{ for: 'tag' } Tags
         .entry
-          %input.tags{ name: 'tags', type: 'hidden', data: {tags: ['bla', 'ble', 'bli', 'blo', 'blu']} }
+          %input.tags.beautiful-box{ name: 'tags', type: 'hidden', data: {tags: @tags} }
             
-
         %label{ for: 'description' } Descrição
         %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
 
