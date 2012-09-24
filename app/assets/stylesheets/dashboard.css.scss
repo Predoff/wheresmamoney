@@ -29,16 +29,26 @@
 	display: none;
 }
 
+.separator {
+	color: #ddd;
+	font-weight: normal;
+}
+
 /* Content related classes and id's */
 
 body{
 	padding: 0;
 }
 
-h2 {
+h2, h3 {
 	font-size: 18px;
 	line-height: 100%;
-	margin: 5px 0 15px 5px;
+	margin: 5px 15px 15px 5px;
+
+	a {
+		font-weight: normal;
+		cursor: pointer;
+	}
 }
 
 .container {
@@ -64,6 +74,14 @@ h2 {
 	float: left;
 	margin-left: 30px;
 	width: 660px;
+
+	h2 {
+		float: left;
+	}
+
+	ul {
+		clear: both;
+	}
 
 	.btn-group {
 		float: right;

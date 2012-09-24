@@ -1,7 +1,24 @@
-#header.clearfix
-  .container
-    %h1 Wherezmamoney?!
-    .btn-group.user-menu
+#header.navbar.navbar-inverse.clearfix
+  .navbar-inner
+    .content.clearfix
+      %a.brand{ href: '#' }
+        %h1 Wherezmamoney?!
+      %ul.nav
+        %li.dropdown
+          %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
+            %i.icon-user
+            = @user.name
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{ href: '#' }
+                %i.icon-cog
+                Configurações
+            %li.divider
+            %li
+              %a{ href: '#' } Sair
+
+    -# .btn-group.user-menu
       %a.btn{ href: '#' }
         %i.icon-user.icon-white
         = @user.name
@@ -89,6 +106,9 @@
 
   #summary_container
     %h2 Extratos
+    %h2.separator= '|'
+    %h2
+      %a Gráficos
     %ul.nav.nav-tabs
       %li.active
         %a Recente
@@ -113,7 +133,7 @@
             = radio_button_tag :show, :option3, checked: 'checked'
             Ambos
 
-      %h4 Movimentações Recentes
+      %h3 Movimentações Recentes
 
       %table.table.table-condensed.table-hover
         %thead
