@@ -2,25 +2,8 @@
 	float: left;
 	width: 250px;
 
-	.entry {
-		float: left;
-		width: 175px;
-	}
-
-	.input-append {
-		button {
-			padding: 4px 8px;
-		}
-	}
-
-	.input-prepend {
-		.add-on {
-			padding: 4px 6px;
-		}
-	}
-
-	input, select {
-		width: auto;
+	input {
+		width: 124px;
 	}
 
 	label {
@@ -35,16 +18,39 @@
 	select{
 		width: 100%;
 	}
-}
 
-.tags-box {
-	border: 1px solid black;
-	clear: both;
-	height: 50px;
-	margin: 0 auto;
-	overflow: auto;
-	padding: 0 2px;
-	width: 222px;
+	.entry {
+		float: left;
+		width: 165px;
+	}
+
+	.form-actions {
+		.btn {
+			width: 93px;
+		}
+	}
+
+	.input-append {
+		button {
+			padding: 4px 8px;
+		}
+	}
+
+	.input-prepend {
+		.add-on {
+			padding: 4px 6px;
+		}
+	}
+
+	.tags-box {
+		border: 1px solid black;
+		clear: both;
+		height: 50px;
+		margin: 0 auto;
+		overflow: auto;
+		padding: 0 2px;
+		width: 222px;
+	}
 
 	.tag {
 		display: inline-block;
