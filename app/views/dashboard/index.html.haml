@@ -29,8 +29,8 @@
 
         %label{ for: 'tag' } Tags
         .entry
-          %select.tag.chosen{ name: 'tags', multiple: 'multiple' }
-            = options_for_select [['bla'.html_safe, 1], 'ble', 'bli']
+          %select.tags{ name: 'tags', multiple: 'multiple', data: {tags: ['bla', 'ble', 'bli', 'blo', 'blu']} }
+            
 
         %label{ for: 'description' } Descrição
         %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
