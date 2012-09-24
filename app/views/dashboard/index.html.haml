@@ -6,7 +6,66 @@
       %li#incomes_tab
         %a{ :'data-url' => new_income_url } Ganhos
     .content-container
-      Trazer formulário em /outgoes/_new por Ajax para cá.
+      %form#outgoes_form
+        .value.clearfix
+          %label{ for: 'value' } Quanto
+          .input-prepend.entry
+            %span.add-on R$
+            %input{ name: 'value', type: 'text', placeholder: 'Ex.: 10,00' }
+
+        .date.clearfix
+          %label{ for: 'date' } Quando
+          .input-append.entry
+            %input{ type: 'text', placeholder: 'Ex.: 12/10/2012', name: 'date' }
+            %button.btn{ type: 'button' }
+              %i.icon-calendar
+
+        .category.clearfix
+          %label{ for: 'category' } Categoria
+          .entry
+            %select{ name: 'category' }
+              - 5.times do
+                %option Opção
+
+        %label{ for: 'tag' } Tags
+        .entry
+          %select.tag.chosen{ name: 'tags', multiple: 'multiple' }
+            = options_for_select [['bla'.html_safe, 1], 'ble', 'bli']
+
+        %label{ for: 'description' } Descrição
+        %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
+
+        .form-actions
+          %input.btn.btn-primary{ type: 'submit', value: 'Save' }
+          %input.btn{ type: 'reset', value: 'Clean' }
+
+      %form#incomes_form.invisible
+        .value.clearfix
+          %label{ for: 'value' } Quanto
+          .input-prepend.entry
+            %span.add-on R$
+            %input{ name: 'value', type: 'text', placeholder: 'Ex.: 10,00' }
+
+        .date.clearfix
+          %label{ for: 'date' } Quando
+          .input-append.entry
+            %input{ type: 'text', placeholder: 'Ex.: 12/10/2012', name: 'date' }
+            %button.btn{ type: 'button' }
+              %i.icon-calendar
+
+        .source.clearfix
+          %label{ for: 'source' } Fonte
+          .entry
+            %select{ name: 'source' }
+              - 5.times do
+                %option Opção
+
+        %label{ for: 'description' } Descrição
+        %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
+
+        .form-actions
+          %input.btn.btn-primary{ type: 'submit', value: 'Save' }
+          %input.btn{ type: 'reset', value: 'Clean' }
 
   #summary_container
     %ul.nav.nav-tabs
@@ -23,9 +82,15 @@
       #filter_container
         %form.form-inline
           %label.radio Mostrar:
-          %input{ name: 'show', type: 'radio', value: 'option1' } Gastos
-          %input{ name: 'show', type: 'radio', value: 'option2' } Ganhos
-          %input{ name: 'show', type: 'radio', value: 'option2' } Ambos
+          %label.radio{ for: 'show_option1'}
+            = radio_button_tag :show, :option1
+            Gastos
+          %label.radio{ for: 'show_option2'}
+            = radio_button_tag :show, :option2
+            Ganhos
+          %label.radio{ for: 'show_option3'}  
+            = radio_button_tag :show, :option3
+            Ambos
 
       %h4 Movimentações Recentes
 

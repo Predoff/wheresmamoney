@@ -4,8 +4,7 @@ jQuery ($) ->
 		unless $(this).parent().hasClass('active')
 			$('#new_register_container li').removeClass('active')
 			$(this).parent().addClass('active')
-
-			$.get $(this).data("url")
+			$('form#incomes_form, form#outgoes_form').toggleClass('invisible')
 
 		false
 
@@ -13,10 +12,7 @@ jQuery ($) ->
 		unless $(this).parent().hasClass('active')
 			$('#new_register_container li').removeClass('active')
 			$(this).parent().addClass('active')
-		
-			$.get $(this).data("url")
-		
-		false
+			$('form#incomes_form, form#outgoes_form').toggleClass('invisible')
 
-	$.get $('li#outgoes_tab a').data("url")
+		false
 

@@ -19,6 +19,9 @@
 		width: 100%;
 	}
 
+	.chzn-choices {
+
+	}
 	.entry {
 		float: left;
 		width: 165px;
@@ -42,16 +45,6 @@
 		}
 	}
 
-	.tags-box {
-		border: 1px solid black;
-		clear: both;
-		height: 50px;
-		margin: 0 auto;
-		overflow: auto;
-		padding: 0 2px;
-		width: 222px;
-	}
-
 	.tag {
 		display: inline-block;
 		margin-bottom: 3px;
@@ -59,5 +52,13 @@
 		a.delete {
 			color: white;
 		}
+	}
+}
+
+.chzn-choices {
+	span {
+		padding-left: 15px;
+		background-image: url('icon-tag.png');
+		background-repeat: no-repeat;
 	}
 }

@@ -29,12 +29,7 @@ ActiveRecord::Schema.define(:version => 20120921183832) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "outgoes_tags", :force => true do |t|
-    t.integer "outgoes_id"
-    t.integer "tags_id"
-  end
-
-  create_table "outgos", :force => true do |t|
+  create_table "outgoes", :force => true do |t|
     t.float    "value"
     t.date     "date"
     t.text     "description"
@@ -42,6 +37,11 @@ ActiveRecord::Schema.define(:version => 20120921183832) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "outgoes_tags", :force => true do |t|
+    t.integer "outgoes_id"
+    t.integer "tags_id"
   end
 
   create_table "sources", :force => true do |t|
