@@ -1,7 +1,6 @@
-class Income < ActiveRecord::Base
-  attr_accessible :date, :description, :source_id, :user_id, :value
+class Income < Transaction
+  attr_accessible :source_id
 
   belongs_to :source
-  belongs_to :user
 
 end
