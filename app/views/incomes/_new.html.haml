@@ -1,4 +1,4 @@
-= form_for(Income.new, html: {id: 'incomes_form', class: 'invisible'}) do |f|
+= form_for(Income.new, remote: true, html: {id: 'incomes_form', class: 'invisible'}) do |f|
 
   = f.label 'value', 'Quanto'
   .input-prepend.entry
@@ -11,7 +11,7 @@
     %button.btn{ type: 'button' }
       %i.icon-calendar
 
-  = f.label 'source', 'Fonte'
+  = f.label 'source_id', 'Fonte'
   .entry
     = f.collection_select 'source_id', @sources, :id, :name
 

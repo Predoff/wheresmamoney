@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925170211) do
+ActiveRecord::Schema.define(:version => 20120925194757) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(:version => 20120925170211) do
     t.integer  "user_id"
   end
 
-  create_table "outgoes_tags", :force => true do |t|
-    t.integer "outgoes_id"
-    t.integer "tags_id"
+  create_table "outgoes_tags", :id => false, :force => true do |t|
+    t.integer "outgo_id"
+    t.integer "tag_id"
   end
 
   create_table "sources", :force => true do |t|

@@ -1,4 +1,4 @@
-= form_for(Outgo.new, html: {id: 'outgoes_form'}) do |f|
+= form_for(Outgo.new, remote: true, html: {id: 'outgoes_form'}) do |f|
   
   = f.label 'value', 'Quanto'
   .input-prepend.entry
@@ -11,14 +11,13 @@
     %button.btn{ type: 'button' }
       %i.icon-calendar
 
-  = f.label 'category', 'Categoria'
+  = f.label 'category_id', 'Categoria'
   .entry
     = f.collection_select 'category_id', @categories, :id, :name
 
   = f.label 'tags', 'Tags'
   .entry
     = f.hidden_field 'tags', { class: 'tags beautiful-box', data: {tags: @tags}, value: "" }
-    -# %input.tags.beautiful-box{ type: 'hidden', data: {tags: @tags} }
   
   = f.label 'description', 'Descrição'
   .entry

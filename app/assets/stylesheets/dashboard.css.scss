@@ -76,8 +76,20 @@ h2, h3 {
 	.btn-group {
 		float: right;
 	}
+
+	.tag {
+		padding-right: 5px;
+	}
 }
 
 #filter_container {
 	float: right;
+}
+
+.column-date {
+	width: 90px;
+}
+
+.column-category, .column-value {
+	width: 110px;
 }
