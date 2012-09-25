@@ -5,7 +5,7 @@ class CreateTransactions < ActiveRecord::Migration
     	t.date     "date"
     	t.float    "value"
 	    t.text     "description"
-	    t.type     "type"
+	    t.string     "type"
 	    t.integer  "source_id"
 	    t.integer  "category_id"
       t.timestamps
