@@ -9,38 +9,7 @@
       %li#incomes_tab
         %a{ :'data-url' => new_income_url } Ganhos
     .content-container
-      %form#outgoes_form
-        .value.clearfix
-          %label{ for: 'value' } Quanto
-          .input-prepend.entry
-            %span.add-on R$
-            %input{ name: 'value', type: 'text', placeholder: 'Ex.: 10,00' }
-
-        .date.clearfix
-          %label{ for: 'date' } Quando
-          .input-append.entry
-            %input{ type: 'text', placeholder: 'Ex.: 12/10/2012', name: 'date' }
-            %button.btn{ type: 'button' }
-              %i.icon-calendar
-
-        .category.clearfix
-          %label{ for: 'category' } Categoria
-          .entry
-            %select{ name: 'category' }
-              - @categories.each do |category|
-                %option{ value: "#{category.id}" }= category.name
-
-        %label{ for: 'tag' } Tags
-        .entry
-          %input.tags.beautiful-box{ name: 'tags', type: 'hidden', data: {tags: @tags} }
-            
-        %label{ for: 'description' } Descrição
-        .entry
-          %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
-
-        .form-actions
-          %input.btn.btn-primary{ type: 'submit', value: 'Save' }
-          %input.btn{ type: 'reset', value: 'Clean' }
+      = render 'outgoes/new'
 
       %form#incomes_form.invisible
         .value.clearfix
