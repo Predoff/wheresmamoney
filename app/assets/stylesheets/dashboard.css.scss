@@ -86,10 +86,10 @@ h2, h3 {
 	float: right;
 }
 
-.column-date {
+.column-date, .column-category, .column-value {
 	width: 90px;
 }
 
-.column-category, .column-value {
-	width: 110px;
+.column-tags, .column-description {
+	width: 160px;
 }

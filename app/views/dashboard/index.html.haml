@@ -63,8 +63,8 @@
                     %i.icon-tag
                     %span.tag= tag.name
                 %td= transaction.description
-                
       - else
         .alert
           %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
-          Ops! Você ainda não tem nenhuma movimentação cadastrada!
+          %strong Ops! 
+          Você ainda não tem nenhuma movimentação cadastrada!
