@@ -1,27 +1,23 @@
-%form#incomes_form.invisible
-  .value.clearfix
-    %label{ for: 'value' } Quanto
-    .input-prepend.entry
-      %span.add-on R$
-      %input{ name: 'value', type: 'text', placeholder: 'Ex.: 10,00' }
+= form_for(Income.new, html: {id: 'incomes_form', class: 'invisible'}) do |f|
 
-  .date.clearfix
-    %label{ for: 'date' } Quando
-    .input-append.entry
-      %input{ type: 'text', placeholder: 'Ex.: 12/10/2012', name: 'date' }
-      %button.btn{ type: 'button' }
-        %i.icon-calendar
+  = f.label 'value', 'Quanto'
+  .input-prepend.entry
+    %span.add-on R$
+    = f.text_field 'value', placeholder: 'Ex.: 10,00'
 
-  .source.clearfix
-    %label{ for: 'source' } Fonte
-    .entry
-      %select{ name: 'source' }
-        - 5.times do
-          %option Opção
+  = f.label 'date', 'Quando'
+  .input-append.entry
+    = f.text_field 'date', placeholder: 'Ex.: 12/10/2012'
+    %button.btn{ type: 'button' }
+      %i.icon-calendar
 
-  %label{ for: 'description' } Descrição
+  = f.label 'source', 'Fonte'
   .entry
-    %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
+    = f.collection_select 'source_id', @sources, :id, :name
+
+  = f.label 'description', 'Descrição'
+  .entry
+    = f.text_area 'description', { rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
 
   .form-actions
     %input.btn.btn-primary{ type: 'submit', value: 'Save' }

@@ -1,7 +1,7 @@
 Wheresmamoney::Application.routes.draw do
   resources :dashboard, :only => 'index'
-  resources :incomes, :only => 'new'
-  resources :outgoes, :only => 'new'
+  resources :incomes
+  resources :outgoes
 
   root :to => 'dashboard#index'
 
