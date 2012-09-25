@@ -43,23 +43,31 @@
 
       %h3 Movimentações Recentes
 
-      %table.table.table-condensed.table-hover
-        %thead
-          %tr
-            %th Data
-            %th Valor
-            %th Categoria
-            %th Tags
-            %th Descrição
-            %th
-        %tbody
-          - 10.times do
+      -if @transactions.size > 0
+        %table.table.table-condensed.table-hover
+          %thead
             %tr
-              - 5.times do
-                %td asd
-              %td
-                .btn-group
-                  %button.btn.btn-mini.btn-success
-                    %i.icon-pencil
-                  %button.btn.btn-mini.btn-danger
-                    %i.icon-remove
+              %th Data
+              %th Valor
+              %th Categoria
+              %th Tags
+              %th Descrição
+              -# %th
+          %tbody
+            - @transactions.limit(10).each do |transaction|
+              %tr
+                %td= transaction.date
+                %td= transaction.value
+                %td= transaction.type == 'outgo' ? transaction.category : transaction.source
+                %td= "tags aqui"
+                %td= transaction.description
+                -# %td
+                  .btn-group
+                    %button.btn.btn-mini.btn-success
+                      %i.icon-pencil
+                    %button.btn.btn-mini.btn-danger
+                      %i.icon-remove
+      - else
+        .alert
+          %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+          Ops! Você ainda não tem nenhuma movimentação cadastrada!
