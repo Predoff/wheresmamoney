@@ -1,0 +1,19 @@
+#header.navbar.navbar-inverse.clearfix
+  .navbar-inner
+    .content.clearfix
+      %a.brand{ href: '#' }
+        %h1 Wherezmamoney?!
+      %ul.nav
+        %li.dropdown
+          %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
+            %i.icon-user
+            = @user.name
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{ href: '#' }
+                %i.icon-cog
+                Configurações
+            %li.divider
+            %li
+              %a{ href: '#' } Sair
