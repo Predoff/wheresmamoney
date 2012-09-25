@@ -1,7 +1,7 @@
 = render 'includes/header'
 
 #container.container.clearfix
-  #new_register_container
+  #new_transaction_container
     %h2 Novo Registro
     %ul.nav.nav-tabs
       %li#outgoes_tab.active
@@ -10,35 +10,7 @@
         %a{ :'data-url' => new_income_url } Ganhos
     .content-container
       = render 'outgoes/new'
-
-      %form#incomes_form.invisible
-        .value.clearfix
-          %label{ for: 'value' } Quanto
-          .input-prepend.entry
-            %span.add-on R$
-            %input{ name: 'value', type: 'text', placeholder: 'Ex.: 10,00' }
-
-        .date.clearfix
-          %label{ for: 'date' } Quando
-          .input-append.entry
-            %input{ type: 'text', placeholder: 'Ex.: 12/10/2012', name: 'date' }
-            %button.btn{ type: 'button' }
-              %i.icon-calendar
-
-        .source.clearfix
-          %label{ for: 'source' } Fonte
-          .entry
-            %select{ name: 'source' }
-              - 5.times do
-                %option Opção
-
-        %label{ for: 'description' } Descrição
-        .entry
-          %textarea{ name: 'description', rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
-
-        .form-actions
-          %input.btn.btn-primary{ type: 'submit', value: 'Save' }
-          %input.btn{ type: 'reset', value: 'Clean' }
+      = render 'incomes/new'
 
   #summary_container
     %h2 Extratos
