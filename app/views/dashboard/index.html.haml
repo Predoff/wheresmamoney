@@ -53,15 +53,16 @@
               %th.column-tags Tags
               %th.column-description Descrição
           %tbody
-            - @transactions.limit(10).each do |transaction|
+            - @transactions.limit(15).each do |transaction|
               %tr{ class: transaction.type == "Outgo" ? 'outgo-row' : 'income-row' }
                 %td= transaction.date
                 %td= number_to_currency transaction.value
                 %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
                 %td
-                  - transaction.tags.each do |tag| 
-                    %i.icon-tag
-                    %span.tag= tag.name
+                  - if transaction.type == 'Outgo'
+                    - transaction.tags.each do |tag| 
+                      %i.icon-tag
+                      %span.tag= tag.name
                 %td= transaction.description
       - else
         .alert

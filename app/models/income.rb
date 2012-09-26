@@ -1,5 +1,5 @@
 class Income < Transaction
-  attr_accessible :source_id
+  attr_accessible :date, :description, :source_id, :user_id, :value
 
   belongs_to :source
 
