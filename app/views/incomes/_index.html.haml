@@ -1,0 +1,24 @@
+%h3 Ganhos Recentes
+
+-if @incomes.any?
+  %table.table.table-condensed.table-hover
+    %thead
+      %tr
+        %th.column-date Data
+        %th.column-value Valor
+        %th.column-category Fonte
+        %th.column-tags 
+        %th.column-description Descrição
+    %tbody
+      - @incomes.limit(15).each do |income|
+        %tr.income-row
+          %td= income.date
+          %td= number_to_currency income.value
+          %td= income.source.name
+          %td
+          %td= income.description
+- else
+  .alert
+    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+    %strong Ops! 
+    Você ainda não tem nenhum ganho cadastrado!

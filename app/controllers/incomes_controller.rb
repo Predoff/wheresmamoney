@@ -1,4 +1,11 @@
 class IncomesController < ApplicationController
+
+	def index
+		@incomes = Income.where(user_id: 1).order('date DESC')
+
+		respond_to :js
+	end
+
 	def create
     value = params[:income][:value].gsub(',', '.')
     date = params[:income][:date]
@@ -8,5 +15,5 @@ class IncomesController < ApplicationController
 
     @income = Income.new( value: value, date: date, description: description, source_id: source_id, user_id: user_id )
   	@income.save
-  end	
+  end
 end

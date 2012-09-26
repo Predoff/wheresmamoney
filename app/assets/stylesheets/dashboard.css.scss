@@ -80,10 +80,6 @@ h2, h3 {
 	.tag {
 		padding-right: 5px;
 	}
-
-	.outgo-row {
-		background-color: #fff8f8;
-	}
 }
 
 #filter_container {
@@ -96,4 +92,12 @@ h2, h3 {
 
 .column-tags, .column-description {
 	width: 160px;
+}
+
+.income-row {
+	background-color: #f4fff4;
+}
+
+.outgo-row {
+	background-color: #fff8f8;
 }

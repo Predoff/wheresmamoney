@@ -31,41 +31,14 @@
       #filter_container
         %form.form-inline
           %label.radio Mostrar:
-          %label.radio{ for: 'show_option1'}
-            = radio_button_tag :show, :option1
+          %label.radio{ for: 'show_option-outgoes', :'data-url' => outgoes_path }
+            = radio_button_tag :show, :'option-outgoes'
             Gastos
-          %label.radio{ for: 'show_option2'}
-            = radio_button_tag :show, :option2
+          %label.radio{ :for => 'show_option-incomes', :'data-url' => incomes_path }
+            = radio_button_tag :show, :'option-incomes'
             Ganhos
-          %label.radio{ for: 'show_option3'}  
-            = radio_button_tag :show, :option3, checked: 'checked'
+          %label.radio{ for: 'show_option-both', :'data-url' => transactions_path }
+            = radio_button_tag :show, :'option-both', checked: 'checked'
             Ambos
 
-      %h3 Movimentações Recentes
-
-      -if @transactions.any?
-        %table.table.table-condensed.table-hover
-          %thead
-            %tr
-              %th.column-date Data
-              %th.column-value Valor
-              %th.column-category Categoria/Fonte
-              %th.column-tags Tags
-              %th.column-description Descrição
-          %tbody
-            - @transactions.limit(15).each do |transaction|
-              %tr{ class: transaction.type == "Outgo" ? 'outgo-row' : 'income-row' }
-                %td= transaction.date
-                %td= number_to_currency transaction.value
-                %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
-                %td
-                  - if transaction.type == 'Outgo'
-                    - transaction.tags.each do |tag| 
-                      %i.icon-tag
-                      %span.tag= tag.name
-                %td= transaction.description
-      - else
-        .alert
-          %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
-          %strong Ops! 
-          Você ainda não tem nenhuma movimentação cadastrada!
+      #summary_content
