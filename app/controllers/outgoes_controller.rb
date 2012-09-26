@@ -8,7 +8,7 @@ class OutgoesController < ApplicationController
 
   def create
     value = params[:outgo][:value].gsub(',', '.')
-    date = params[:outgo][:date]
+    date = Date.parse(params[:outgo][:date])
     description = params[:outgo][:description]
     user_id = 1
     category_id = params[:outgo][:category_id]

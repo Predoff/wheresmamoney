@@ -11,7 +11,7 @@
         %th.column-description Descrição
     %tbody
       - @transactions.limit(15).each do |transaction|
-        %tr{ class: transaction.type == "Outgo" ? 'outgo-row' : 'income-row' }
+        %tr{ :class => (transaction.type == "Outgo" ? 'outgo-row' : 'income-row'), :'data-transaction-id' => transaction.id }
           %td= l transaction.date
           %td= number_to_currency transaction.value
           %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name

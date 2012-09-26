@@ -11,7 +11,7 @@
         %th.column-description Descrição
     %tbody
       - @outgoes.limit(15).each do |outgo|
-        %tr.outgo-row
+        %tr.outgo-row{ :'data-output-id' => outgo.id }
           %td= l outgo.date
           %td= number_to_currency outgo.value
           %td= outgo.category.name

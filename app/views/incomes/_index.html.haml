@@ -11,7 +11,7 @@
         %th.column-description Descrição
     %tbody
       - @incomes.limit(15).each do |income|
-        %tr.income-row
+        %tr.income-row{ :'data-income-id' => income.id }
           %td= l income.date
           %td= number_to_currency income.value
           %td= income.source.name
