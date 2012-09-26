@@ -9,18 +9,26 @@
         %th.column-category Categoria/Fonte
         %th.column-tags Tags
         %th.column-description Descrição
+        %th.column-options
     %tbody
       - @transactions.limit(15).each do |transaction|
-        %tr{ :class => (transaction.type == "Outgo" ? 'outgo-row' : 'income-row'), :'data-transaction-id' => transaction.id }
+        %tr{ :'data-transaction-id' => transaction.id }
           %td= l transaction.date
-          %td= number_to_currency transaction.value
+          %td
+            - if transaction.type == 'Outgo' 
+              %i.icon-arrow-down.icon-red
+            - else
+              %i.icon-arrow-up.icon-green
+            = number_to_currency transaction.value
           %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
           %td
             - if transaction.type == 'Outgo'
               - transaction.tags.each do |tag| 
-                %i.icon-tag
-                %span.tag= tag.name
+                %span
+                  %i.icon-tag
+                  %span.tag= tag.name
           %td= transaction.description
+          %td
 - else
   .alert
     %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
