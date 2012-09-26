@@ -7,7 +7,7 @@
 
   = f.label 'date', 'Quando'
   .input-append.entry
-    = f.text_field 'date', placeholder: 'Ex.: 12/10/2012'
+    = f.text_field 'date', value: @today
     %button.btn{ type: 'button' }
       %i.icon-calendar
 

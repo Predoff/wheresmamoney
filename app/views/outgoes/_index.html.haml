@@ -12,7 +12,7 @@
     %tbody
       - @outgoes.limit(15).each do |outgo|
         %tr.outgo-row
-          %td= outgo.date
+          %td= l outgo.date
           %td= number_to_currency outgo.value
           %td= outgo.category.name
           %td

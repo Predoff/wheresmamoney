@@ -12,7 +12,7 @@
     %tbody
       - @incomes.limit(15).each do |income|
         %tr.income-row
-          %td= income.date
+          %td= l income.date
           %td= number_to_currency income.value
           %td= income.source.name
           %td
