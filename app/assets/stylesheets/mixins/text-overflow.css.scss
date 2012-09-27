@@ -1,0 +1,5 @@
+@mixin text-overflow {
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+}

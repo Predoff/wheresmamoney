@@ -1,4 +1,6 @@
-%h3 Movimentações Recentes
+%h3
+  = params[:type] == 'Outgo' ? 'Gastos' : params[:type] == 'Income' ? 'Ganhos' : 'Movimentações' 
+  = ' Recentes'
 
 -if @transactions.any?
   %table.table.table-condensed.table-hover
@@ -11,7 +13,7 @@
         %th.column-description Descrição
         %th.column-options
     %tbody
-      - @transactions.limit(15).each do |transaction|
+      - @transactions.limit(10).each do |transaction|
         %tr{ :'data-transaction-id' => transaction.id }
           %td= l transaction.date
           %td
@@ -21,14 +23,16 @@
               %i.icon-arrow-up.icon-green
             = number_to_currency transaction.value
           %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
-          %td
-            - if transaction.type == 'Outgo'
-              - transaction.tags.each do |tag| 
-                %span
+          %td.tag-cell
+            %p
+              - if transaction.type == 'Outgo'
+                - transaction.tags.each do |tag| 
                   %i.icon-tag
                   %span.tag= tag.name
-          %td= transaction.description
+          %td.description-cell
+            %p= transaction.description
           %td
+            %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
 - else
   .alert
     %button.close{ :type => "button", :'data-dismiss' => "alert" } ×

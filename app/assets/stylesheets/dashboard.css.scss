@@ -1,3 +1,5 @@
+@import 'mixins/text-overflow';
+
 /* Generic Classes */
 
 .beautiful-box {
@@ -60,6 +62,32 @@ h2, h3 {
 
 /* Summary */
 
+button.destroy-transaction {
+	background-color: transparent;
+	border: 0;
+	color: #999;
+	cursor: pointer;
+	display: inline;
+	line-height: 15px;
+	margin-bottom: 5px;
+	padding: 0;
+}
+
+button.destroy-transaction:hover {
+	color: #333;
+}
+
+table p {
+	margin-bottom: 0;
+}
+
+tr.minimized p {
+	@include text-overflow;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 150px;
+}
+
 #summary_container {
 	float: left;
 	margin-left: 30px;
@@ -91,7 +119,8 @@ h2, h3 {
 }
 
 .column-options {
-	width: 20px;
+	text-align: center;
+	width: 10px;
 }
 
 .column-tags, .column-description {

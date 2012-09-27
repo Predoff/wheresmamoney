@@ -8,3 +8,4 @@ class User < ActiveRecord::Base
   has_many :sources
   has_many :tags
 end
+	
