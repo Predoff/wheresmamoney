@@ -4,12 +4,12 @@ class OutgoesController < ApplicationController
     value = params[:outgo][:value].gsub(',', '.')
     date = Date.parse(params[:outgo][:date])
     description = params[:outgo][:description]
-    user_id = 1
+    current_user = User.first
     category_id = params[:outgo][:category_id]
 
-    tags = params[:outgo][:tags].split(',').map { |name| Tag.find_or_create_by_name name }
+    tags = params[:outgo][:tags].split(',').map { |name| current_user.tags.find_or_create_by_name name }
 
-    @outgo = Outgo.new( value: value, date: date, description: description, category_id: category_id, user_id: user_id, tags: tags )
+    @outgo = current_user.outgoes.build( value: value, date: date, description: description, category_id: category_id, tags: tags )
   	@outgo.save
   end
 end
