@@ -1,11 +1,5 @@
 class OutgoesController < ApplicationController
 
-  def index
-    @outgoes = Outgo.where(user_id: 1).order('date DESC')
-
-    respond_to :js
-  end
-
   def create
     value = params[:outgo][:value].gsub(',', '.')
     date = Date.parse(params[:outgo][:date])

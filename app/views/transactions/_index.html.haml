@@ -6,8 +6,8 @@
       %tr
         %th.column-date Data
         %th.column-value Valor
-        %th.column-category Categoria/Fonte
-        %th.column-tags Tags
+        %th.column-category= params[:type] == 'Outgo' ? 'Categoria' : params[:type] == 'Income' ? 'Fonte' : 'Categoria/Fonte'
+        %th.column-tags= 'Tags' unless params[:type] == "Income"
         %th.column-description Descrição
         %th.column-options
     %tbody

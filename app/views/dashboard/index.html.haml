@@ -29,15 +29,15 @@
 
     .content-container
       #filter_container
-        %form.form-inline
+        %form.form-inline{ :'data-url' => transactions_path }
           %label.radio Mostrar:
-          %label.radio{ for: 'show_option-outgoes', :'data-url' => outgoes_path }
+          %label.radio{ for: 'show_option-outgoes' }
             = radio_button_tag :show, :'option-outgoes'
             Gastos
-          %label.radio{ :for => 'show_option-incomes', :'data-url' => incomes_path }
+          %label.radio{ :for => 'show_option-incomes' }
             = radio_button_tag :show, :'option-incomes'
             Ganhos
-          %label.radio{ for: 'show_option-both', :'data-url' => transactions_path }
+          %label.radio{ for: 'show_option-both' }
             = radio_button_tag :show, :'option-both', checked: 'checked'
             Ambos
 
