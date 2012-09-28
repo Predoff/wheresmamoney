@@ -1,17 +1,15 @@
-### Abas ###
-###
-changeTab = (tabLink) ->
-  unless $(tabLink).closest('li').hasClass('active')
-    $('#new_transaction_container li').removeClass('active')
-    $(tabLink).closest('li').addClass('active')
-    $('form#incomes_form, form#outgoes_form').toggleClass('invisible')
-
-  false
-###
-
 jQuery ($) ->
-  ### Botão de exclusão de transação ###
 
+  ### Abas ###
+  $('#content_container').delegate '.nav a', 'click', ->
+    unless $(this).closest('li').hasClass('active')
+      $('#content_container .nav li').removeClass('active')
+      $(this).closest('li').addClass('active')
+      $('#content_container table').addClass('invisible')
+      $("table.#{$(this).attr('href')}").removeClass('invisible')
+    false
+
+  ### Botão de exclusão de transação ###
   $('#summary_container').delegate '.destroy-transaction', 'click', ->
     if confirm('Tem certeza que deseja excluir esse registro?')
       $.ajax 
@@ -19,7 +17,6 @@ jQuery ($) ->
           url: $(this).data('url')
 
   ### Expansão e minimização de linhas da tabela de exibição por click ###
-
   $('#summary_container').delegate "tr.minimized td.description-cell, 
   tr.minimized td.tag-cell, 
   tr.expanded td.description-cell, 
@@ -28,7 +25,6 @@ jQuery ($) ->
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
   ### Filtro de transação por tipo por radio-boxes ###
-
   $('input#show_option-outgoes').click ->
     $.get $(this).closest("form").data("url"), {type: 'Outgo'}
     

@@ -2,6 +2,10 @@
 
 /* Generic Classes */
 
+.alert {
+	clear: both;
+}
+
 .beautiful-box {
 	background-color: white;
 	border: 1px solid #CCC;
@@ -26,7 +30,7 @@
 }
 
 .invisible {
-	display: none;
+	display: none !important;
 }
 
 .separator {

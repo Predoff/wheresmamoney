@@ -1,13 +1,13 @@
 #summary_container  
   %ul.nav.nav-tabs
     %li.active
-      %a Recente
+      %a{ href: 'recent' } Recente
     %li
-      %a no Mês
+      %a{ href: 'by-month' } no Mês
     %li
-      %a no Ano
+      %a{ href: 'by-year' } no Ano
     %li
-      %a Personalizado 
+      %a{ href: 'custom' } Personalizado 
 
   .content-container
     #filter_container
@@ -16,7 +16,7 @@
         %label.radio{ for: 'show_option-outgoes' }
           = radio_button_tag :show, :'option-outgoes'
           Gastos
-        %label.radio{ :for => 'show_option-incomes' }
+        %label.radio{ for: 'show_option-incomes' }
           = radio_button_tag :show, :'option-incomes'
           Ganhos
         %label.radio{ for: 'show_option-both' }

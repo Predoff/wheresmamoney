@@ -1,11 +1,23 @@
 !!! 5
 %html
 %head
-	%title Wheresmamoney
-	= stylesheet_link_tag "application", :media => "all"
-	= javascript_include_tag "application"
-	= csrf_meta_tags
+  %title Wheresmamoney
+  = stylesheet_link_tag "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
 
 %body
+  = render 'includes/header'
 
-	= yield
+  #container.container.clearfix
+    #new_transaction_container
+      %ul.nav.nav-tabs
+        %li#outgoes_tab.active
+          %a{ :'data-url' => new_outgo_url } Gastos
+        %li#incomes_tab
+          %a{ :'data-url' => new_income_url } Ganhos
+      .content-container
+        = render 'outgoes/new'
+        = render 'incomes/new'
+    #content_container    
+      = yield
