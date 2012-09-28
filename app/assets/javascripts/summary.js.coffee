@@ -20,8 +20,8 @@ jQuery ($) ->
   ### Filtro de transação por tipo por radio-boxes ###
 
   $('input#show_option-outgoes').click ->
-    $.get $(this).closest("form").data("url"), {type: 'Outgo'} 
-
+    $.get $(this).closest("form").data("url"), {type: 'Outgo'}
+    
   $('input#show_option-incomes').click ->
     $.get $(this).closest("form").data("url"), {type: 'Income'}
 

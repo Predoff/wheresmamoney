@@ -4,20 +4,11 @@ cleanTags = (formId) ->
 jQuery ($) ->
 	
 	### Change Tab ###
-	$('li#outgoes_tab a').click ->
-		unless $(this).parent().hasClass('active')
+	$('#new_transaction_container li a').click ->
+		unless $(this).closest('li').hasClass('active')
 			$('#new_transaction_container li').removeClass('active')
-			$(this).parent().addClass('active')
+			$(this).closest('li').addClass('active')
 			$('form#incomes_form, form#outgoes_form').toggleClass('invisible')
-
-		false
-
-	$('li#incomes_tab a').click ->
-		unless $(this).parent().hasClass('active')
-			$('#new_transaction_container li').removeClass('active')
-			$(this).parent().addClass('active')
-			$('form#incomes_form, form#outgoes_form').toggleClass('invisible')
-
 		false
 
 	### Clean Form ###

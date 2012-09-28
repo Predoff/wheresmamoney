@@ -17,6 +17,14 @@
 	border-radius: 3px;
 }
 
+.icon-green { 
+	color: #282;
+}
+
+.icon-red { 
+	color: #e22;
+}
+
 .invisible {
 	display: none;
 }
@@ -48,10 +56,6 @@ h2, h3 {
 	width: 940px;
 }
 
-.content-container {
-	padding: 10px;
-}
-
 .nav.nav-tabs {
 	margin-bottom: 0;
 
@@ -60,7 +64,7 @@ h2, h3 {
 	}
 }
 
-/* Summary */
+/* Content */
 
 button.destroy-transaction {
 	background-color: transparent;
@@ -88,7 +92,7 @@ tr.minimized p {
 	width: 150px;
 }
 
-#summary_container {
+#content_container {
 	float: left;
 	margin-left: 30px;
 	width: 660px;
@@ -97,42 +101,19 @@ tr.minimized p {
 		float: left;
 	}
 
-	ul {
-		clear: both;
+	.column-date, .column-category, .column-value {
+		width: 90px;
 	}
-
-	.btn-group {
-		float: right;
+	.column-options {
+		text-align: center;
+		width: 10px;
 	}
-
+	.column-tags, .column-description {
+		width: 150px;
+	}
 	.tag {
 		padding-right: 5px;
 	}
-}
-
-#filter_container {
-	float: right;
-}
-
-.column-date, .column-category, .column-value {
-	width: 90px;
-}
-
-.column-options {
-	text-align: center;
-	width: 10px;
-}
-
-.column-tags, .column-description {
-	width: 150px;
-}
-
-.icon-green { 
-	color: #282;
-}
-
-.icon-red { 
-	color: #e22;
 }
 
 .income-row {

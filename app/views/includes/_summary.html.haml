@@ -1,0 +1,31 @@
+%h2 Extratos
+%h2.separator= '|'
+%h2
+  %a Gráficos
+
+#summary_container  
+  %ul.nav.nav-tabs
+    %li.active
+      %a Recente
+    %li
+      %a no Mês
+    %li
+      %a no Ano
+    %li
+      %a Personalizado 
+
+  .content-container
+    #filter_container
+      %form.form-inline{ :'data-url' => transactions_path }
+        %label.radio Mostrar:
+        %label.radio{ for: 'show_option-outgoes' }
+          = radio_button_tag :show, :'option-outgoes'
+          Gastos
+        %label.radio{ :for => 'show_option-incomes' }
+          = radio_button_tag :show, :'option-incomes'
+          Ganhos
+        %label.radio{ for: 'show_option-both' }
+          = radio_button_tag :show, :'option-both', checked: 'checked'
+          Ambos
+
+    #summary_content
