@@ -1,5 +1,15 @@
+### Abas ###
+###
+changeTab = (tabLink) ->
+  unless $(tabLink).closest('li').hasClass('active')
+    $('#new_transaction_container li').removeClass('active')
+    $(tabLink).closest('li').addClass('active')
+    $('form#incomes_form, form#outgoes_form').toggleClass('invisible')
+
+  false
+###
+
 jQuery ($) ->
-	
   ### Botão de exclusão de transação ###
 
   $('#summary_container').delegate '.destroy-transaction', 'click', ->

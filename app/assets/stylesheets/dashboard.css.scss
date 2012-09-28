@@ -56,6 +56,10 @@ h2, h3 {
 	width: 940px;
 }
 
+.content-container {
+	padding: 10px;
+}
+
 .nav.nav-tabs {
 	margin-bottom: 0;
 
@@ -85,8 +89,12 @@ table p {
 	margin-bottom: 0;
 }
 
+tr.expanded p, tr.minimized p {
+	cursor: pointer;
+}
+
 tr.minimized p {
-	@include text-overflow;
+	@include text-overflow;	
 	overflow: hidden;
 	white-space: nowrap;
 	width: 150px;

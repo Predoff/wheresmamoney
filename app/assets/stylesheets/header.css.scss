@@ -1,6 +1,10 @@
 #header {
 	margin-bottom: 10px;
 
+	a.dropdown-toggle {
+		padding-bottom: 9px;
+		padding-top: 9px;
+	}
 	h1 {
 		float: left;
 		font-size: 22px;
@@ -12,20 +16,23 @@
 		margin: 0;
 		padding: 0;
 	}
-
 	.user-menu {
 		float: right;
 	}
 }
 
 .navbar {
+	li a {
+		cursor: pointer;
+	}
+	ul.nav {
+		float: left;
+		margin-left: 100px;
+	}
+
 	.content {
 		margin: 0 auto;
 		width: 940px;
-
-		ul {
-			float: right;
-		}
 	}
 
 	.navbar-inner {
