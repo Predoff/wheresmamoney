@@ -13,13 +13,13 @@
     #filter_container
       %form.form-inline
         %label.radio Mostrar:
-        %label.radio{ for: 'show_option-outgoes' }
+        %label.radio{ :for => 'show_option-outgoes', :'data-filter' => 'recent-outgo' }
           = radio_button_tag :show, :'option-outgoes'
           Gastos
-        %label.radio{ for: 'show_option-incomes' }
+        %label.radio{ :for => 'show_option-incomes', :'data-filter' => 'recent-income'  }
           = radio_button_tag :show, :'option-incomes'
           Ganhos
-        %label.radio{ for: 'show_option-both' }
+        %label.radio{ :for => 'show_option-both', :'data-filter' => 'recent-transaction'  }
           = radio_button_tag :show, :'option-both', checked: 'checked'
           Ambos
 
