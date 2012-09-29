@@ -1,4 +1,4 @@
-#summary_container  
+#summary_container
   %ul.nav.nav-tabs
     %li.active
       %a{ href: 'recent' } Recente
@@ -11,7 +11,7 @@
 
   .content-container
     #filter_container
-      %form.form-inline{ :'data-url' => transactions_path }
+      %form.form-inline
         %label.radio Mostrar:
         %label.radio{ for: 'show_option-outgoes' }
           = radio_button_tag :show, :'option-outgoes'

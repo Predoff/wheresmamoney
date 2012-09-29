@@ -1,3 +1,8 @@
+hideRows = ->
+  $('tr.recent-transaction').hide()
+  $('tr.recent-outgo').hide()
+  $('tr.recent-income').hide()
+
 jQuery ($) ->
 
   ### Abas ###
@@ -6,7 +11,7 @@ jQuery ($) ->
       $('#content_container .nav li').removeClass('active')
       $(this).closest('li').addClass('active')
       $('#content_container table').addClass('invisible')
-      $("table.#{$(this).attr('href')}").removeClass('invisible')
+      $("table.#{$(this).attr('href')}").removeClass('invisible')  
     false
 
   ### Botão de exclusão de transação ###
@@ -26,16 +31,17 @@ jQuery ($) ->
 
   ### Filtro de transação por tipo por radio-boxes ###
   $('input#show_option-outgoes').click ->
-    $.get $(this).closest("form").data("url"), {type: 'Outgo'}
+    hideRows()
+    $('tr.recent-outgo').fadeIn()
     
   $('input#show_option-incomes').click ->
-    $.get $(this).closest("form").data("url"), {type: 'Income'}
+    hideRows()
+    $('tr.recent-income').fadeIn()
 
   $('input#show_option-both').click ->
-    $.get $(this).closest("form").data("url")
-
-  $('input#show_option-both').click()
-
+    hideRows()
+    $('tr.recent-transaction').fadeIn()
+  
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###
     hoverTimeout = {}

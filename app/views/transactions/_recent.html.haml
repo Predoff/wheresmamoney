@@ -1,4 +1,4 @@
-%table.table.table-condensed.table-hover.recent{ style: 'display: none;'}
+%table.table.table-condensed.table-hover.recent
   %thead
     %tr
       %th.column-date Data
@@ -8,23 +8,6 @@
       %th.column-description Descrição
       %th.column-options
   %tbody
-    - @transactions.limit(15).each do |transaction|
-      %tr{ :'data-transaction-id' => transaction.id }
-        %td= l transaction.date
-        %td
-          - if transaction.type == 'Outgo' 
-            %i.icon-arrow-down.icon-red
-          - else
-            %i.icon-arrow-up.icon-green
-          = number_to_currency transaction.value
-        %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
-        %td.tag-cell
-          %p
-            - if transaction.type == 'Outgo'
-              - transaction.tags.each do |tag| 
-                %i.icon-tag
-                %span.tag= tag.name
-        %td.description-cell
-          %p= transaction.description
-        %td
-          %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
+    = render 'recent_transactions'
+    = render 'recent_outgoes'
+    = render 'recent_incomes'

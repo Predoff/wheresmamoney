@@ -4,5 +4,6 @@ jQuery(function($) {
 
   $("#" + formId)[0].reset();
   $("#" + formId + " .tags").select2("val", "");
-  $('#filter_container input:checked').click();
+  
+  $.get($('ul#navgation_menu li.active a').attr('href'));
 });

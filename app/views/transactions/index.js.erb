@@ -1,9 +1,9 @@
 $("#summary_content").html("<%= escape_javascript render(:partial => 'index') %>");
 
-$('#summary_container table').fadeIn(300) 
-
 $('#summary_container tr').each(function() {
   if ($(this).height() > 40) {
     return $(this).addClass('minimized');
   }
-});
+}); 
+
+$('input#show_option-both').click();

@@ -1,0 +1,12 @@
+- @incomes.limit(15).order('date DESC').each do |transaction|
+  %tr.recent-income{ :'data-transaction-id' => transaction.id }
+    %td= l transaction.date
+    %td
+      %i.icon-arrow-up.icon-green
+      = number_to_currency transaction.value
+    %td= transaction.source.name
+    %td.tag-cell      
+    %td.description-cell
+      %p= transaction.description
+    %td
+      %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×

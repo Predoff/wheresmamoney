@@ -1,0 +1,16 @@
+- @outgoes.limit(15).order('date DESC').each do |transaction|
+  %tr.recent-outgo{ :'data-transaction-id' => transaction.id }
+    %td= l transaction.date
+    %td
+      %i.icon-arrow-down.icon-red
+      = number_to_currency transaction.value
+    %td= transaction.category.name
+    %td.tag-cell
+      %p
+        - transaction.tags.each do |tag| 
+          %i.icon-tag
+          %span.tag= tag.name
+    %td.description-cell
+      %p= transaction.description
+    %td
+      %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
