@@ -2,13 +2,7 @@
   = params[:type] == 'Outgo' ? 'Gastos' : params[:type] == 'Income' ? 'Ganhos' : 'Movimentações' 
   = ' Recentes'
 
--if @transactions.any?
-  = render 'recent'
-  = render 'by_month'
-  = render 'by_year'
-  = render 'custom'
-- else
-  .alert
-    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
-    %strong Ops! 
-    Você ainda não tem nenhuma movimentação cadastrada!
+= render 'recent'
+= render 'by_month'
+= render 'by_year'
+= render 'custom'

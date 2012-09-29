@@ -3,6 +3,10 @@ hideRows = ->
   $('tr.recent-outgo').hide()
   $('tr.recent-income').hide()
 
+showAlertNoTransactions = ->
+  $('#summary_content table').hide()
+  $('#summary_content .alert').show()
+
 jQuery ($) ->
 
   ### Abas ###
@@ -32,15 +36,30 @@ jQuery ($) ->
   ### Filtro de transação por tipo por radio-boxes ###
   $('input#show_option-outgoes').click ->
     hideRows()
-    $('tr.recent-outgo').fadeIn()
+    if $('tr.recent-outgo')
+      $('#summary_content .alert').hide()
+      $('#summary_content table').show()
+      $('tr.recent-outgo').fadeIn()
+    else
+      showAlertNoTransactions()
     
   $('input#show_option-incomes').click ->
     hideRows()
-    $('tr.recent-income').fadeIn()
+    if $('tr.recent-income')
+      $('#summary_content .alert').hide()
+      $('#summary_content table').show()
+      $('tr.recent-income').fadeIn()
+    else
+      showAlertNoTransactions()
 
   $('input#show_option-both').click ->
     hideRows()
-    $('tr.recent-transaction').fadeIn()
+    if $('tr.recent-income')
+      $('#summary_content .alert').hide()
+      $('#summary_content table').show()
+      $('tr.recent-transaction').fadeIn()
+    else
+      showAlertNoTransactions()
   
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###
