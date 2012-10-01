@@ -1,8 +1,3 @@
-hideRows = ->
-  $('tr.recent-transaction').hide()
-  $('tr.recent-outgo').hide()
-  $('tr.recent-income').hide()
-
 jQuery ($) ->
 
   ### Abas ###
@@ -31,11 +26,13 @@ jQuery ($) ->
 
   ### Filtro de transação por tipo por radio-boxes ###
   $('#content_container').delegate ' form .radio input', 'click', ->
-    hideRows()
-    if $("tr.#{$(this).closest('label').data('filter')}")
+    $('.recent-transaction, .recent-outgo, .recent-income').hide()
+    type = $(this).closest('label').data('filter')
+    if $("tr.#{type}")
       $('#summary_content .alert').hide()
       $('#summary_content table').show()
-      $("tr.#{$(this).closest('label').data('filter')}").fadeIn()
+      $("span.#{type}").show()
+      $("tr.#{type}").fadeIn()
     else
       $('#summary_content table').hide()
       $('#summary_content .alert').show()

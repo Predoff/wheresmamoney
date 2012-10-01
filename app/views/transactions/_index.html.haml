@@ -1,5 +1,8 @@
 %h2
-  = params[:type] == 'Outgo' ? 'Gastos' : params[:type] == 'Income' ? 'Ganhos' : 'Movimentações' 
+  -# = params[:type] == 'Outgo' ? 'Gastos' : params[:type] == 'Income' ? 'Ganhos' : 'Movimentações' 
+  %span.recent-transaction Movimentações
+  %span.recent-outgo Gastos
+  %span.recent-income Ganhos
   = ' Recentes'
 
 = render 'recent'
