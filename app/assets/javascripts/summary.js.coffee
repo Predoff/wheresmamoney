@@ -31,13 +31,13 @@ jQuery ($) ->
     $('.recent-transaction, .recent-outgo, .recent-income').hide()
     type = $(this).closest('label').data('filter')
     if $("tr.#{type}")
-      $('#summary_content .alert').hide()
+      $('#summary_content .alert.no-transaction-to-show').hide()
       $('#summary_content table').show()
       $("span.#{type}").show()
       $("tr.#{type}").fadeIn()
     else
       $('#summary_content table').hide()
-      $('#summary_content .alert').show()
+      $('#summary_content .alert.no-transaction-to-show').show()
 
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###

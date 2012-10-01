@@ -1,0 +1,27 @@
+#summary_container
+  %ul.nav.nav-tabs
+    %li.active
+      %a{ href: 'recent' } Recente
+    %li
+      %a{ href: 'by-month' } no Mês
+    %li
+      %a{ href: 'by-year' } no Ano
+    %li
+      %a{ href: 'custom' } Personalizado 
+
+  .content-container
+    #filter_container
+      %form.form-inline
+        %label.radio Mostrar:
+        %label.radio{ :for => 'show_option-outgoes', :'data-filter' => 'recent-outgo' }
+          = radio_button_tag :show, :'option-outgoes'
+          Gastos
+        %label.radio{ :for => 'show_option-incomes', :'data-filter' => 'recent-income'  }
+          = radio_button_tag :show, :'option-incomes'
+          Ganhos
+        %label.radio{ :for => 'show_option-both', :'data-filter' => 'recent-transaction'  }
+          = radio_button_tag :show, :'option-both', checked: 'checked'
+          Ambos
+
+    #summary_content
+      -# Conteúdo carregado de .. ?

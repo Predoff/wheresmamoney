@@ -8,11 +8,11 @@
       %th.column-description Descrição
       %th.column-options
   %tbody
-    = render 'summary/recent_transactions'
-    = render 'summary/recent_outgoes'
-    = render 'summary/recent_incomes'
+    = render :partial => 'summary/recent_transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
+    = render :partial => 'summary/recent_transactions', :locals => { :transactions => @incomes, :type => 'income' }
+    = render :partial => 'summary/recent_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
 
-.alert
+.alert.no-transaction-to-show
   %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
   %strong Ops! 
   Você ainda não tem nenhuma movimentação cadastrada!
