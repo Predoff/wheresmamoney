@@ -1,11 +1,10 @@
 %h2
-  -# = params[:type] == 'Outgo' ? 'Gastos' : params[:type] == 'Income' ? 'Ganhos' : 'Movimentações' 
   %span.recent-transaction Movimentações
   %span.recent-outgo Gastos
   %span.recent-income Ganhos
   = ' Recentes'
 
-= render 'recent'
-= render 'by_month'
-= render 'by_year'
-= render 'custom'
+= render 'summary/recent'
+= render 'summary/by_month'
+= render 'summary/by_year'
+= render 'summary/custom'

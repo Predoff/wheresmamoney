@@ -8,9 +8,9 @@
       %th.column-description Descrição
       %th.column-options
   %tbody
-    = render 'recent_transactions'
-    = render 'recent_outgoes'
-    = render 'recent_incomes'
+    = render 'summary/recent_transactions'
+    = render 'summary/recent_outgoes'
+    = render 'summary/recent_incomes'
 
 .alert
   %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
