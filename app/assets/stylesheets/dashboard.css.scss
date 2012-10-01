@@ -38,41 +38,11 @@
 	font-weight: normal;
 }
 
-/* Content related classes and id's */
+/* Content */
 
 body{
 	padding: 0;
 }
-
-h2, h3 {
-	font-size: 18px;
-	line-height: 100%;
-	margin: 5px 15px 15px 5px;
-
-	a {
-		font-weight: normal;
-		cursor: pointer;
-	}
-}
-
-.container {
-	margin: 0 auto;
-	width: 940px;
-}
-
-.content-container {
-	padding: 10px;
-}
-
-.nav.nav-tabs {
-	margin-bottom: 0;
-
-	li {
-		cursor: pointer;
-	}
-}
-
-/* Content */
 
 button.destroy-transaction {
 	background-color: transparent;
@@ -89,6 +59,17 @@ button.destroy-transaction:hover {
 	color: #333;
 }
 
+h2, h3 {
+	font-size: 18px;
+	line-height: 100%;
+	margin: 5px 15px 15px 5px;
+
+	a {
+		font-weight: normal;
+		cursor: pointer;
+	}
+}
+
 table p {
 	margin-bottom: 0;
 }
@@ -102,6 +83,10 @@ tr.minimized p {
 	overflow: hidden;
 	white-space: nowrap;
 	width: 150px;
+}
+
+tr.minimized td.category-source-cell p {
+	width: 90px;
 }
 
 #content_container {
@@ -128,10 +113,31 @@ tr.minimized p {
 	}
 }
 
+.container {
+	margin: 0 auto;
+	width: 940px;
+}
+
+.content-container {
+	padding: 10px;
+}
+
 .income-row {
 	background-color: #f4fff4;
 }
 
+.nav.nav-tabs {
+	margin-bottom: 0;
+
+	li {
+		cursor: pointer;
+	}
+}
+
 .outgo-row {
 	background-color: #fff8f8;
+}
+
+.table tr.grouped-by-day-row td {
+	border-top-style: dotted;
 }

@@ -20,7 +20,9 @@ jQuery ($) ->
   $('#summary_container').delegate "tr.minimized td.description-cell, 
   tr.minimized td.tag-cell, 
   tr.expanded td.description-cell, 
-  tr.expanded td.tag-cell", 
+  tr.expanded td.tag-cell,
+  tr.minimized td.category-source-cell,
+  tr.expanded td.category-source-cell", 
   'click', -> 
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
