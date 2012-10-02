@@ -1,8 +1,19 @@
+- months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
 %h2.by-month.invisible
   %span.transaction Movimentações
   %span.outgo Gastos
   %span.income Ganhos
-  %span= " em #{title}"
+  -# %span= title
+  = " em "
+  %span{ style: 'font-family: Arial;'}
+    %button «
+    %button ‹
+    = months[Date.today.month - 1]
+    = " de "
+    = Date.today.year
+    %button ›
+    %button »
 
 %table.by-month.invisible{ :width => '100%' }
   %tr

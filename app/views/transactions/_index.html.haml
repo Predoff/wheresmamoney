@@ -1,4 +1,6 @@
+- months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
 = render :partial =>  'summary/recent', :locals => { :title => ' Recentes' }
-= render :partial =>  'summary/by_month', :locals => { :title => ' mes' }
-= render :partial =>  'summary/by_year', :locals => { :title => ' ano' }
+= render :partial =>  'summary/by_month', :locals => { :title => " em #{months[Date.today.month - 1]} de #{Date.today.year}" }
+= render :partial =>  'summary/by_year', :locals => { :title => " em #{Date.today.year}" }
 = render :partial =>  'summary/custom', :locals => { :title => ' custom' }
