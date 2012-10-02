@@ -28,9 +28,9 @@ jQuery ($) ->
   'click', -> 
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
-  ### Filtro de transação por tipo por radio-boxes ###
+  ### Radio-boxes de filtro de transação ###
   $('#content_container').delegate 'form .radio input', 'click', ->
-    $('.recent-transaction, .recent-outgo, .recent-income').hide()
+    $('.transaction, .outgo, .income').hide()
     type = $(this).closest('label').data('filter')
     if $("tr.#{type}")
       $('#summary_content .alert.no-transaction-to-show').hide()

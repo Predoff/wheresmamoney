@@ -3,7 +3,7 @@
   - transactions = transactions_by_date.last
   -if transactions.size == 1
     - transaction = transactions.first
-    %tr{ :'data-transaction-id' => transaction.id, :class => "recent-#{type}" }
+    %tr{ :'data-transaction-id' => transaction.id, :class => "#{type}" }
       %td= l  transactions_date
       %td
         - if transaction.type == 'Outgo' 
@@ -24,7 +24,7 @@
       %td
         %button.destroy-transaction{ :'data-url' => transaction_path(transactions) } ×
   -else
-    %tr{ :class => "recent-#{type}"}
+    %tr{ :class => "#{type}"}
       %td= l transactions_date
       %td
         - total = 0
@@ -41,7 +41,7 @@
       - 4.times do
         %td
     - transactions.each do |transaction|
-      %tr.grouped-by-day-row{ :'data-transaction-id' => transaction.id, :class => "recent-#{type}" }
+      %tr.grouped-by-day-row{ :'data-transaction-id' => transaction.id, :class => "#{type}" }
         %td
         %td
           - if transaction.type == 'Outgo' 
