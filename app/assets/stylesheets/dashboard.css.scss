@@ -98,18 +98,24 @@ tr.minimized td.category-source-cell p {
 		float: left;
 	}
 
-	.column-date, .column-category, .column-value {
-		width: 90px;
+	.column-date {
+		width: 70px;
 	}
-	.column-options {
-		text-align: center;
-		width: 10px;
+	.column-value {
+		width: 95px;
+	}
+	.column-category{
+		width: 105px;
 	}
 	.column-tags, .column-description {
 		width: 150px;
 	}
 	.tag {
 		padding-right: 5px;
+	}
+	.column-options {
+		text-align: center;
+		width: 10px;
 	}
 }
 
