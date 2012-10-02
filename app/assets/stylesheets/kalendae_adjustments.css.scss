@@ -6,3 +6,24 @@ a.k-btn-close {
 	margin-top: 4px;
 	padding: 5px;
 }
+
+.k-days, .k-header {
+	margin-left: 4px;
+}
+
+.kalendae .k-days span {
+	text-align: center;
+	padding: 3px;
+}
+
+.kalendae .k-days span.k-in-month.k-active {
+	border-color: #E3E3E3;
+}
+
+.kalendae .k-header span {
+	padding-left: 1px;
+}
+
+.kalendae .k-header span, .kalendae .k-days span {
+	margin: 0;
+}
