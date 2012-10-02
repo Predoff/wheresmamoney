@@ -8,7 +8,7 @@
 
   = f.label 'date', 'Quando'
   .input-append.entry
-    = f.text_field 'date', value: @today
+    = f.text_field 'date', :value => l(Date.today),  :class => 'auto-kal', :'data-kal' => "format: 'DD/MM/YYYY'"
     %button.btn{ type: 'button' }
       %i.icon-calendar
 

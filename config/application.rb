@@ -58,5 +58,8 @@ module Wheresmamoney
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Mapping vendor/assets/images
+    config.assets.paths << "#{Rails.root}/vendor/assets/images"
   end
 end

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require component
+//= require kalendae
 //= require select2
 //= require twitter/bootstrap
 //= require_tree .

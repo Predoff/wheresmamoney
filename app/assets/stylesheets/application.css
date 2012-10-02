@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require_bootstrap
- *= require component
+ *= require kalendae
  *= require select2
  *= require_tree .
  */
