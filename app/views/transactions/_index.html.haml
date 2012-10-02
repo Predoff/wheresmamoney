@@ -1,10 +1,4 @@
-%h2
-  %span.recent-transaction Movimentações
-  %span.recent-outgo Gastos
-  %span.recent-income Ganhos
-  = ' Recentes'
-
-= render 'summary/recent'
-= render 'summary/by_month'
-= render 'summary/by_year'
-= render 'summary/custom'
+= render :partial =>  'summary/recent', :locals => { :title => ' Recentes' }
+= render :partial =>  'summary/by_month', :locals => { :title => ' mes' }
+= render :partial =>  'summary/by_year', :locals => { :title => ' ano' }
+= render :partial =>  'summary/custom', :locals => { :title => ' custom' }

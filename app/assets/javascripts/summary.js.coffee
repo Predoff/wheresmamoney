@@ -1,12 +1,14 @@
 jQuery ($) ->
 
-  ### Abas ###
+  ### Abas: Recente | por Mês | por Ano | Personalizado ###
   $('#content_container').delegate '.nav a', 'click', ->
     unless $(this).closest('li').hasClass('active')
       $('#content_container .nav li').removeClass('active')
       $(this).closest('li').addClass('active')
       $('#content_container table').addClass('invisible')
-      $("table.#{$(this).attr('href')}").removeClass('invisible')  
+      $("table.#{$(this).attr('href')}").removeClass('invisible')
+      $('#content_container h2').addClass('invisible')
+      $("h2.#{$(this).attr('href')}").removeClass('invisible')
     false
 
   ### Botão de exclusão de transação ###
@@ -27,7 +29,7 @@ jQuery ($) ->
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
   ### Filtro de transação por tipo por radio-boxes ###
-  $('#content_container').delegate ' form .radio input', 'click', ->
+  $('#content_container').delegate 'form .radio input', 'click', ->
     $('.recent-transaction, .recent-outgo, .recent-income').hide()
     type = $(this).closest('label').data('filter')
     if $("tr.#{type}")
