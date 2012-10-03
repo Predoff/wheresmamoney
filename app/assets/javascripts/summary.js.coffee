@@ -7,7 +7,7 @@ jQuery ($) ->
       $(this).hide()
 
   minimizeRecentTransitions = ->  
-    $('.recent table tr').each ->
+    $('.recent tr, .by-month tr.inline').each ->
       if ($(this).height() > 40)
         $(this).addClass('minimized')
 
