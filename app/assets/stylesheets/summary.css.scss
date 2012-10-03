@@ -83,35 +83,17 @@ tr.minimized td.category-source-cell p {
 	background-color: #f4fff4;
 }
 
-.sub-header {
-	border-bottom: 1px solid #ddd;
-	clear: both;
-	font-size: 14px;
-	line-height: 1;
-	margin-bottom: 20px;
-	padding-bottom: 5px;
-	
-	.total-display {
-		float: right;
-		margin-top: 10px;
-	}
-
-	span.label {
-		font-size: 16px;
-	}
-}
-
 .outgo-row {
 	background-color: #fff8f8;
 }
 
 .period-selector {
 	float: left;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	line-height: 28px;
 	text-align: center;
-	width: 250px;
+	width: 200px;
 
 	button.btn {
 		font-family: arial;
@@ -121,6 +103,10 @@ tr.minimized td.category-source-cell p {
 		padding: 2px 7px 4px;
 		width: 30px;
 	}
+}
+
+.sub-header {
+	clear: both;
 }
 
 .summary-header {
@@ -134,5 +120,14 @@ tr.minimized td.category-source-cell p {
 .tag-cell {
 	.tag {
 		padding-right: 5px;
+	}
+}
+
+.total-display {
+	float: right;
+	margin-top: 10px;
+
+	span.label {
+		font-size: 16px;
 	}
 }

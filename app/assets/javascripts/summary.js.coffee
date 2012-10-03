@@ -1,5 +1,16 @@
 jQuery ($) ->
 
+  ### Funções ###
+
+  minimizeByMonthTransactions = ->
+    $('.by-month table tr.grouped-by-day-row').each ->
+      $(this).hide()
+
+  minimizeRecentTransitions = ->  
+    $('.recent table tr').each ->
+      if ($(this).height() > 40)
+        $(this).addClass('minimized')
+
   ### Abas: Recente | por Mês | por Ano | Personalizado ###
   $('#content_container').delegate '.nav a', 'click', ->
     unless $(this).closest('li').hasClass('active')
@@ -40,6 +51,8 @@ jQuery ($) ->
     else
       $('#summary_content table').hide()
       $('#summary_content .alert.no-transaction-to-show').show()
+    minimizeRecentTransitions()
+    minimizeByMonthTransactions()
 
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###
