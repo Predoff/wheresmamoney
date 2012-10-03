@@ -19,9 +19,9 @@ table p {
 	margin-bottom: 0;
 }
 
-table.table.table-condensed.table-hover {
+/*table.table.table-condensed.table-hover {
 	border-top: 1px solid #ddd;
-}
+}*/
 
 tr.expanded p, tr.minimized p {
 	cursor: pointer;
@@ -84,10 +84,12 @@ tr.minimized td.category-source-cell p {
 }
 
 .sub-header {
+	border-bottom: 1px solid #ddd;
 	clear: both;
 	font-size: 14px;
 	line-height: 1;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
+	padding-bottom: 5px;
 	
 	.total-display {
 		float: right;

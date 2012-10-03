@@ -7,6 +7,9 @@
 .by-month.invisible
   .sub-header.clearfix
     .period-selector
+      -# .btn-group.push-left
+        %button.btn ‹
+        %button.btn › 
       .btn-group.push-left
         %button.btn «
         %button.btn ‹
@@ -19,7 +22,42 @@
         %button.btn »
     .total-display
       %span.label.label-info= "Total: "
-      = "R$ 00,00"
+      %span.income
+        - total_value = 0
+        - @incomes.where(date: Date.today.beginning_of_month..Date.today.end_of_month).each do |t| 
+          - if t.type == "Income"
+            - total_value += t.value
+          - else
+            - total_value -= t.value
+        - if total_value <= 0
+          %i.icon-arrow-down.icon-red 
+        - else 
+          %i.icon-arrow-up.icon-green
+        = number_to_currency total_value.abs
+      %span.outgo
+        - total_value = 0
+        - @outgoes.where(date: Date.today.beginning_of_month..Date.today.end_of_month).each do |t| 
+          - if t.type == "Income"
+            - total_value += t.value
+          - else
+            - total_value -= t.value
+        - if total_value <= 0
+          %i.icon-arrow-down.icon-red 
+        - else 
+          %i.icon-arrow-up.icon-green
+        = number_to_currency total_value.abs
+      %span.transaction
+        - total_value = 0
+        - @transactions.where(date: Date.today.beginning_of_month..Date.today.end_of_month).each do |t| 
+          - if t.type == "Income"
+            - total_value += t.value
+          - else
+            - total_value -= t.value
+        - if total_value <= 0
+          %i.icon-arrow-down.icon-red 
+        - else 
+          %i.icon-arrow-up.icon-green
+        = number_to_currency total_value.abs
       
   %table.table.table-condensed.table-hover
     %thead

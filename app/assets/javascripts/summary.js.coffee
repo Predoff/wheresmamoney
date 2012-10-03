@@ -18,7 +18,7 @@ jQuery ($) ->
           type: 'DELETE'
           url: $(this).data('url')
 
-  ### Expansão e minimização de linhas da tabela de exibição por click ###
+  ### Expansão e minimização de linhas por click da tabela de exibição de Recentes ###
   $('#summary_container').delegate "tr.minimized td.description-cell, 
   tr.minimized td.tag-cell, 
   tr.expanded td.description-cell, 
