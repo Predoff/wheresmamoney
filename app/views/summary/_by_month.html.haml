@@ -1,28 +1,27 @@
-- months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-
 %h2.by-month.invisible
   %span.transaction Movimentações
   %span.outgo Gastos
   %span.income Ganhos
-  -# %span= title
-  = " em "
-  %span{ style: 'font-family: Arial;'}
-    %button «
-    %button ‹
-    = months[Date.today.month - 1]
-    = " de "
-    = Date.today.year
-    %button ›
-    %button »
+  %span= title
 
-%table.by-month.invisible{ :width => '100%' }
-  %tr
-    %td
-      .alert
-        %i.icon-warning-sign
-        = " Em construção."
-
-  -#
+.by-month.invisible
+  .sub-header.clearfix
+    .period-selector
+      .btn-group.push-left
+        %button.btn «
+        %button.btn ‹
+      %span
+        = @months[:"#{Date.today.month}"]
+        = " de "
+        = Date.today.year
+      .btn-group.push-right
+        %button.btn ›
+        %button.btn »
+    .total-display
+      %span.label.label-info= "Total: "
+      = "R$ 00,00"
+      
+  %table.table.table-condensed.table-hover
     %thead
       %tr
         %th.column-date Data
@@ -32,23 +31,12 @@
         %th.column-description Descrição
         %th.column-options
     %tbody
-      - @transactions.where(date: Date.today.beginning_of_month..Date.today.end_of_month).order('date').each do |transaction|
-        %tr{ :'data-transaction-id' => transaction.id }
-          %td= l transaction.date
-          %td
-            - if transaction.type == 'Outgo' 
-              %i.icon-arrow-down.icon-red
-            - else
-              %i.icon-arrow-up.icon-green
-            = number_to_currency transaction.value
-          %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
-          %td.tag-cell
-            %p
-              - if transaction.type == 'Outgo'
-                - transaction.tags.each do |tag| 
-                  %i.icon-tag
-                  %span.tag= tag.name
-          %td.description-cell
-            %p= transaction.description
-          %td
-            %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
+      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
+      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
+      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
+
+      -# %tr
+        %td{ colspan: '6' }
+          .alert
+            %i.icon-warning-sign
+            = " Em construção."

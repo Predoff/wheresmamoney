@@ -1,33 +1,136 @@
+@import 'mixins/text-overflow';
+
+button.destroy-transaction {
+	background-color: transparent;
+	border: 0;
+	color: #999;
+	cursor: pointer;
+	display: inline;
+	line-height: 15px;
+	margin-bottom: 5px;
+	padding: 0;
+}
+
+button.destroy-transaction:hover {
+	color: #333;
+}
+
+table p {
+	margin-bottom: 0;
+}
+
+table.table.table-condensed.table-hover {
+	border-top: 1px solid #ddd;
+}
+
+tr.expanded p, tr.minimized p {
+	cursor: pointer;
+}
+
+tr.minimized p {
+	@include text-overflow;	
+	overflow: hidden;
+	white-space: nowrap;
+	width: 150px;
+}
+
+tr.minimized td.category-source-cell p {
+	width: 90px;
+}
+
+#filter_container {
+	float: right;
+}
+
 #summary_container {
+	form {
+		margin-bottom: 0;
+	}
 	ul {
 		clear: both;
 	}
 }
 
 #summary_content {
-	h2 {
-		width: 400px;
-
-		button {
-			background-color: white;
-			border: 1px solid #e9e9e9;
-			color: #333;
-			font-family: Arial;
-			font-size: 18px;
-			font-weight: bold;
-			height: auto;
-			margin-bottom: 5px;
-			padding: 0;
-			text-align: center;
-			width: 20px;
-		}
-	}
 	table, .alert {
 		clear: both;
 		margin-bottom: 0;
 	}
 }
 
-#filter_container {
-	float: right;
+.column-date {
+	width: 70px;
+}
+
+.column-value {
+	width: 95px;
+}
+
+.column-category{
+	width: 105px;
+}
+
+.column-tags, .column-description {
+	width: 150px;
+}
+
+.column-options {
+	text-align: center;
+	width: 10px;
+}
+
+.income-row {
+	background-color: #f4fff4;
+}
+
+.sub-header {
+	clear: both;
+	font-size: 14px;
+	line-height: 1;
+	margin-bottom: 5px;
+	
+	.total-display {
+		float: right;
+		margin-top: 10px;
+	}
+
+	span.label {
+		font-size: 16px;
+	}
+}
+
+.outgo-row {
+	background-color: #fff8f8;
+}
+
+.period-selector {
+	float: left;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 28px;
+	text-align: center;
+	width: 250px;
+
+	button.btn {
+		font-family: arial;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 1;
+		padding: 2px 7px 4px;
+		width: 30px;
+	}
+}
+
+.summary-header {
+	text-align: center;
+}
+
+.table tr.grouped-by-day-row td {
+	border-top-style: dotted;
+}
+
+.tag-cell {
+	.tag {
+		padding-right: 5px;
+	}
 }

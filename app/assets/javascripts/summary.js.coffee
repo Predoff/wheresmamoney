@@ -5,8 +5,8 @@ jQuery ($) ->
     unless $(this).closest('li').hasClass('active')
       $('#content_container .nav li').removeClass('active')
       $(this).closest('li').addClass('active')
-      $('#content_container table').addClass('invisible')
-      $("table.#{$(this).attr('href')}").removeClass('invisible')
+      $('.recent, .by-month, .by-year, .custom').addClass('invisible')
+      $(".#{$(this).attr('href')}").removeClass('invisible')
       $('#content_container h2').addClass('invisible')
       $("h2.#{$(this).attr('href')}").removeClass('invisible')
     false
