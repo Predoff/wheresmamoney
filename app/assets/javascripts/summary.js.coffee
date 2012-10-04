@@ -51,6 +51,9 @@ jQuery ($) ->
       $('#summary_content .alert.no-transaction-to-show').show()
     minimizeRows()
 
+    if $('.total-display')
+      $(".total-display .#{type}").hide().fadeIn()
+
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###
     hoverTimeout = {}

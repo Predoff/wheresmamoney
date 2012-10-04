@@ -28,9 +28,3 @@
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
-
-    -# %tr
-      %td{ colspan: '6' }
-        .alert
-          %i.icon-warning-sign
-          = " Em construção."
