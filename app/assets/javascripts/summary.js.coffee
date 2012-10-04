@@ -16,9 +16,7 @@ jQuery ($) ->
       $('#content_container .nav li').removeClass('active')
       $(this).closest('li').addClass('active')
       $('.recent, .by-month, .by-year, .custom').addClass('invisible')
-      $(".#{$(this).attr('href')}").removeClass('invisible')
-      $('#content_container h2').addClass('invisible')
-      $("h2.#{$(this).attr('href')}").removeClass('invisible')
+      $(".#{$(this).attr('href')}").removeClass('invisible').hide().fadeIn()
     minimizeRows()
     false
 
