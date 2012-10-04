@@ -27,7 +27,7 @@ jQuery ($) ->
           type: 'DELETE'
           url: $(this).data('url')
 
-  ### Expansão e minimização de linhas por click da tabela de exibição de Recentes ###
+  ### Expansão e minimização de linhas com conteúdo em overflow ###
   $('#summary_container').delegate "tr.minimized td.description-cell, 
   tr.minimized td.tag-cell, 
   tr.expanded td.description-cell, 
@@ -36,6 +36,15 @@ jQuery ($) ->
   tr.expanded td.category-source-cell", 
   'click', -> 
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
+
+  ### Expansão e minimização de linhas de dias com mais de uma transação ###
+  $('#content_container').delegate 'tr.minimized-day', 'click', ->
+    $(this).removeClass('minimized-day').addClass('expanded-day')
+    $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeIn()
+
+  $('#content_container').delegate 'tr.expanded-day', 'click', ->
+    $(this).removeClass('expanded-day').addClass('minimized-day')
+    $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeOut()
 
   ### Radio-boxes de filtro de transação ###
   $('#content_container').delegate 'form .radio input', 'click', ->
