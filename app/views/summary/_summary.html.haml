@@ -1,12 +1,12 @@
 #summary_container
   %ul.nav.nav-tabs
-    %li.active
+    %li.recent-tab
       %a{ href: 'recent' } Recente
-    %li
+    %li.by-month-tab
       %a{ href: 'by-month' } no Mês
-    %li
+    %li.by-year-tab
       %a{ href: 'by-year' } no Ano
-    %li
+    %li.custom-tab
       %a{ href: 'custom' } Personalizado 
 
   .content-container
@@ -20,7 +20,7 @@
           = radio_button_tag :show, :'option-incomes'
           Ganhos
         %label.radio{ :for => 'show_option-both', :'data-filter' => 'transaction'  }
-          = radio_button_tag :show, :'option-both', checked: 'checked'
+          = radio_button_tag :show, :'option-both'
           Ambos
 
     #summary_content
