@@ -3,6 +3,7 @@
 button.destroy-transaction, button.expand-day-transactions {
 	background-color: transparent;
 	border: 0;
+	color: #999;
 	cursor: pointer;
 	display: block;
 	margin: 0 auto;
@@ -10,22 +11,22 @@ button.destroy-transaction, button.expand-day-transactions {
 	text-align: center;
 }
 
-button.destroy-transaction:hover, button.expand-day-transactions:hover {
+button.destroy-transaction:hover, button.expand-day-transactions:hover, button.expand-day-transactions.hover {
+	color: #333;
 	font-size: 1.5em;
 	font-weight: bold;
 }
 
-button.destroy-transaction {
-	color: #999;
-}
-
 button.destroy-transaction:hover {
-	color: #333;
 	margin-top: -1px;
 }
 
-button.expand-day-transactions:hover {
+button.expand-day-transactions {
 	margin-top: -2px;
+}
+
+button.expand-day-transactions:hover, button.expand-day-transactions.hover {
+	margin-top: -4px;
 }
 
 table p {
