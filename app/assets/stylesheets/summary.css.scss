@@ -118,7 +118,7 @@ tr.minimized td.category-source-cell p {
 		width: 30px;
 	}
 }
-
+/*
 .sub-header {
 	clear: both;
 }
@@ -126,7 +126,7 @@ tr.minimized td.category-source-cell p {
 .summary-header {
 	text-align: center;
 }
-
+*/
 .table tr.grouped-by-day-row td {
 	border-top-style: dotted;
 }
@@ -138,8 +138,9 @@ tr.minimized td.category-source-cell p {
 }
 
 .total-display {
-	float: right;
-	margin-top: 10px;
+	float: left;
+	margin: 5px 0 12px 55px;
+	/* margin: 20px 0 10px; */
 
 	span.label {
 		font-size: 16px;

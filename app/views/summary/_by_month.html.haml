@@ -1,20 +1,14 @@
 .by-month.invisible
-  .period-selector.push-left
-    .btn-group.push-left
-      %button.btn ‹
-      %button.btn › 
-    -#.btn-group.push-left
-      %button.btn «
-      %button.btn ‹
-    -#.btn-group.push-right
-      %button.btn ›
-      %button.btn »
-    %span
-      = @months[:"#{Date.today.month}"]
-      = " de "
-      = Date.today.year
+  .summary-header.clearfix
+    .period-selector
+      .btn-group.push-left
+        %button.btn ‹
+        %button.btn ›
+      %span
+        = @months[:"#{Date.today.month}"]
+        = " de "
+        = Date.today.year
 
-  .sub-header.clearfix
     .total-display
       %span.label.label-info= "Total: "
       %span.income
@@ -53,7 +47,7 @@
         - else 
           %i.icon-arrow-up.icon-green
         = number_to_currency total_value.abs
-      
+        
   %table.table.table-condensed.table-hover
     %thead
       %tr
@@ -68,8 +62,8 @@
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
 
-      -# %tr
-        %td{ colspan: '6' }
-          .alert
-            %i.icon-warning-sign
-            = " Em construção."
+    -# %tr
+      %td{ colspan: '6' }
+        .alert
+          %i.icon-warning-sign
+          = " Em construção."
