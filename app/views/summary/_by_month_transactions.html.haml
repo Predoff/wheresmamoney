@@ -21,7 +21,7 @@
               %span.tag= tag.name
       %td.description-cell
         %p= transaction.description
-      %td
+      %td.column-options
         %button.destroy-transaction{ :'data-url' => transaction_path(transactions) } ×
   -else
     %tr{ :class => "#{type}"}
@@ -38,8 +38,10 @@
         - else 
           %i.icon-arrow-up.icon-green
         = number_to_currency total.abs
-      - 4.times do
+      - 3.times do
         %td
+      %td.column-options
+        %button.expand-day-transactions &#8964;
     - transactions.each do |transaction|
       %tr.grouped-by-day-row{ :'data-transaction-id' => transaction.id, :class => "#{type}" }
         %td
@@ -58,7 +60,7 @@
                 %span.tag= tag.name
         %td.description-cell
           %p= transaction.description
-        %td
+        %td.column-options
           %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
 
 

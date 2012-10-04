@@ -1,27 +1,40 @@
 @import 'mixins/text-overflow';
 
-button.destroy-transaction {
+button.destroy-transaction, button.expand-day-transactions {
 	background-color: transparent;
 	border: 0;
-	color: #999;
 	cursor: pointer;
-	display: inline;
-	line-height: 15px;
-	margin-bottom: 5px;
+	display: block;
+	margin: 0 auto;
 	padding: 0;
+	text-align: center;
+}
+
+button.destroy-transaction:hover, button.expand-day-transactions:hover {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+button.destroy-transaction {
+	color: #999;
 }
 
 button.destroy-transaction:hover {
 	color: #333;
+	margin-top: -1px;
+}
+
+button.expand-day-transactions:hover {
+	margin-top: -2px;
 }
 
 table p {
 	margin-bottom: 0;
 }
 
-/*table.table.table-condensed.table-hover {
-	border-top: 1px solid #ddd;
-}*/
+td.column-options, th.column-options {
+	padding: 4px 0;
+}
 
 tr.expanded p, tr.minimized p {
 	cursor: pointer;
@@ -76,7 +89,7 @@ tr.minimized td.category-source-cell p {
 
 .column-options {
 	text-align: center;
-	width: 10px;
+	width: 20px;
 }
 
 .income-row {
