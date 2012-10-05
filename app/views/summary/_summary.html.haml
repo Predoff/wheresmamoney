@@ -19,7 +19,7 @@
         %label.radio{ :for => 'show_option-incomes', :'data-filter' => 'income'  }
           = radio_button_tag :show, :'option-incomes'
           Ganhos
-        %label.radio{ :for => 'show_option-both', :'data-filter' => 'transaction'  }
+        %label.radio{ :for => 'show_option-both', :'data-filter' => 'transaction', :checked => 'checked'  }
           = radio_button_tag :show, :'option-both'
           Ambos
 

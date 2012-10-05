@@ -7,7 +7,7 @@ jQuery ($) ->
         $(this).addClass('minimized')
         
     if $('#summary_container li.by-month-tab').hasClass('active')
-      $('.by-month table tr.grouped-by-day-row').each ->
+      $('.by-month table tr.grouped-by-day-row, button.minimize-day-transactions').each ->
         $(this).hide()
 
   ### Abas: Recente | por Mês | por Ano | Personalizado ###
@@ -39,12 +39,21 @@ jQuery ($) ->
 
   ### Expansão e minimização de linhas de dias com mais de uma transação ###
   $('#content_container').delegate 'tr.minimized-day', 'click', ->
+    type = 'transaction' if $(this).hasClass('transaction')
+    type = 'outgo' if $(this).hasClass('outgo')
+    type = 'income' if $(this).hasClass('income')
     $(this).removeClass('minimized-day').addClass('expanded-day')
-    $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeIn()
+    $("tr.grouped-by-day-row.#{type}.#{$(this).data("transactions-date")}-transaction-row").fadeIn()
+    $('button.expand-day-transactions, button.minimize-day-transactions').toggle()
 
   $('#content_container').delegate 'tr.expanded-day', 'click', ->
     $(this).removeClass('expanded-day').addClass('minimized-day')
-    $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeOut()
+    $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeOut(200)
+    $('button.expand-day-transactions, button.minimize-day-transactions').toggle()
+
+  ### Hover effect dos botões de expandir e minimizar linhas de dias com mais de uma transação ###
+  $('#content_container').delegate 'tr.minimized-day, tr.expanded-day', 'mouseenter mouseleave', ->
+    $(this).find('button.expand-day-transactions:first, button.minimize-day-transactions:first').toggleClass('hover')
 
   ### Radio-boxes de filtro de transação ###
   $('#content_container').delegate 'form .radio input', 'click', ->

@@ -42,6 +42,7 @@
         %td
       %td.column-options
         %button.expand-day-transactions &#8964;
+        %button.minimize-day-transactions &#8963;
     - transactions.each do |transaction|
       %tr.grouped-by-day-row{ :'data-transaction-id' => transaction.id, :class => "#{type} #{transactions_date}-transaction-row" }
         %td

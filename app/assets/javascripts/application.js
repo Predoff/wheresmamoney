@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui-1.8.24.effect.min.js
 //= require jquery_ujs
 //= require kalendae
 //= require select2

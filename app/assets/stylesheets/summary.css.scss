@@ -1,9 +1,10 @@
 @import 'mixins/text-overflow';
 
-button.destroy-transaction, button.expand-day-transactions {
+button.destroy-transaction, 
+button.expand-day-transactions, 
+button.minimize-day-transactions {
 	background-color: transparent;
 	border: 0;
-	color: #999;
 	cursor: pointer;
 	display: block;
 	margin: 0 auto;
@@ -11,10 +12,18 @@ button.destroy-transaction, button.expand-day-transactions {
 	text-align: center;
 }
 
-button.destroy-transaction:hover, button.expand-day-transactions:hover, button.expand-day-transactions.hover {
+button.destroy-transaction:hover, 
+button.expand-day-transactions:hover, 
+button.expand-day-transactions.hover, 
+button.minimize-day-transactions:hover, 
+button.minimize-day-transactions.hover {
 	color: #333;
 	font-size: 1.5em;
 	font-weight: bold;
+}
+
+button.destroy-transaction {
+	color: #ddd;
 }
 
 button.destroy-transaction:hover {
@@ -25,8 +34,20 @@ button.expand-day-transactions {
 	margin-top: -2px;
 }
 
-button.expand-day-transactions:hover, button.expand-day-transactions.hover {
+button.expand-day-transactions:hover, 
+button.expand-day-transactions.hover {
 	margin-top: -4px;
+}
+
+button.minimize-day-transactions {
+	margin-bottom: -3px;
+	margin-top: 3px;
+}
+
+button.minimize-day-transactions:hover, 
+button.minimize-day-transactions.hover {
+	margin-bottom: -4px;
+	margin-top: 4px;
 }
 
 table p {
