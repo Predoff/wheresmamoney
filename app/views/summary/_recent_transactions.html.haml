@@ -21,7 +21,7 @@
               %span.tag= tag.name
       %td.description-cell
         %p= transaction.description
-      %td
+      %td.column-options
         %button.destroy-transaction{ :'data-url' => transaction_path(transactions) } ×
   -else
     %tr{ :class => "#{type}"}
@@ -58,5 +58,5 @@
                 %span.tag= tag.name
         %td.description-cell
           %p= transaction.description
-        %td
+        %td.column-options
           %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×
