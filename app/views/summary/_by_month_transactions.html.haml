@@ -38,8 +38,8 @@
         - else 
           %i.icon-arrow-up.icon-green
         = number_to_currency total.abs
-      - 3.times do
-        %td
+      %td{ colspan: '3' }
+        .transactions-counter-cell= "(#{transactions.size} transações)"
       %td.column-options
         %button.expand-day-transactions &#8964;
         %button.minimize-day-transactions &#8963;

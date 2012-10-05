@@ -62,6 +62,10 @@ tr.expanded p, tr.minimized p {
 	cursor: pointer;
 }
 
+tr.expanded-day, tr.minimized-day {
+	cursor: pointer;
+}
+
 tr.minimized p {
 	@include text-overflow;	
 	overflow: hidden;
@@ -166,4 +170,8 @@ tr.minimized td.category-source-cell p {
 	span.label {
 		font-size: 16px;
 	}
+}
+
+.transactions-counter-cell {
+	color: #bbb;
 }

@@ -44,11 +44,13 @@ jQuery ($) ->
     type = 'income' if $(this).hasClass('income')
     $(this).removeClass('minimized-day').addClass('expanded-day')
     $("tr.grouped-by-day-row.#{type}.#{$(this).data("transactions-date")}-transaction-row").fadeIn()
+    $('.transactions-counter-cell').fadeOut()
     $('button.expand-day-transactions, button.minimize-day-transactions').toggle()
 
   $('#content_container').delegate 'tr.expanded-day', 'click', ->
     $(this).removeClass('expanded-day').addClass('minimized-day')
     $("tr.grouped-by-day-row.#{$(this).data("transactions-date")}-transaction-row").fadeOut(200)
+    $('.transactions-counter-cell').fadeIn()
     $('button.expand-day-transactions, button.minimize-day-transactions').toggle()
 
   ### Hover effect dos botões de expandir e minimizar linhas de dias com mais de uma transação ###
