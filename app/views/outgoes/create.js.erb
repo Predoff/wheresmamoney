@@ -2,8 +2,10 @@ jQuery(function($) {
   var formId;
   formId = 'outgoes_form';
 
+  //Limpa o formulário
   $("#" + formId)[0].reset();
   $("#" + formId + " .tags").select2("val", "");
   
+  //Atualiza o dashboard
   $.get($('ul#navgation_menu li.active a').attr('href'));
 });
