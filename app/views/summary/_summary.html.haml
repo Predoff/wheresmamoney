@@ -19,9 +19,9 @@
         %label.radio{ :for => 'show_option-incomes', :'data-filter' => 'income'  }
           = radio_button_tag :show, :'option-incomes'
           Ganhos
-        %label.radio{ :for => 'show_option-both', :'data-filter' => 'transaction', :checked => 'checked'  }
-          = radio_button_tag :show, :'option-both'
+        %label.radio{ :for => 'show_option-both', :'data-filter' => 'transaction' }
+          = radio_button_tag :show, :'option-both', true
           Ambos
 
     #summary_content
-      -# Conteúdo carregado por /transactions/index.js.erb, o qual é chamado por header.js.coffee
+      -# Conteúdo carregado de /transactions/_index.html.haml por /transactions/index.js.erb, o qual é chamado por header.js.coffee
