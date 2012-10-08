@@ -1,4 +1,5 @@
-- transactions.where(date: Date.today.beginning_of_month..Date.today.end_of_month).group_by(&:date).each do |transactions_by_date|
+- date = "#{@year_to_show}-#{@month_to_show}-01".to_date
+- transactions.where(date: date.beginning_of_month..date.end_of_month).group_by(&:date).each do |transactions_by_date|
   - transactions_date = transactions_by_date.first
   - transactions = transactions_by_date.last
   -if transactions.size == 1
