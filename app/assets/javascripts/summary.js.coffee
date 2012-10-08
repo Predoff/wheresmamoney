@@ -27,6 +27,33 @@ jQuery ($) ->
           type: 'DELETE'
           url: $(this).data('url')
 
+  ### Botão de troca de mês em visualização by-month ###
+  $('#summary_container').delegate 'button.previous-month', 'click', ->
+    year = $('.period-selector span.year').data('year')
+    currentMonth = $('.period-selector span.month').data('month')
+    if  currentMonth isnt 1
+      previousMonth = currentMonth - 1
+    else
+      previousMonth = 12
+      year -= 1
+    $.ajax
+        type: 'GET'
+        url: $('ul#navgation_menu li.active a').attr('href')
+        data: "selected-month=#{previousMonth}&selected-year=#{year}"
+
+  $('#summary_container').delegate 'button.next-month', 'click', ->
+    year = $('.period-selector span.year').data('year')
+    currentMonth = $('.period-selector span.month').data('month')
+    if  currentMonth isnt 12
+      nextMonth = currentMonth + 1
+    else
+      nextMonth = 1
+      year += 1
+    $.ajax 
+        type: 'GET'
+        url: $('ul#navgation_menu li.active a').attr('href')
+        data: "selected-month=#{nextMonth}&selected-year=#{year}"
+
   ### Expansão e minimização de linhas com conteúdo em overflow ###
   $('#summary_container').delegate "tr.minimized td.description-cell, 
   tr.minimized td.tag-cell, 

@@ -2,12 +2,11 @@
   .summary-header.clearfix
     .period-selector
       .btn-group.push-left
-        %button.btn ‹
-        %button.btn ›
-      %span
-        = @months[:"#{Date.today.month}"]
-        = " de "
-        = Date.today.year
+        %button.btn.previous-month ‹
+        %button.btn.next-month ›
+      %span.month{:'data-month' => @month_to_show }= @months[:"#{@month_to_show}"]
+      = " de "
+      %span.year{:'data-year' => @year_to_show }= @year_to_show
 
     .total-display
       %span.label.label-info= "Total: "
@@ -25,6 +24,6 @@
         %th.column-description Descrição
         %th.column-options
     %tbody
-      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
+      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
