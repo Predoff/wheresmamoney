@@ -27,3 +27,8 @@
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
       = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
+
+  .alert.no-transaction-to-show
+    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+    %strong Ops! 
+    Você ainda não tem nenhuma movimentação cadastrada neste mês!

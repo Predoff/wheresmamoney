@@ -1,7 +1,13 @@
 jQuery ($) ->
 
   ### Funções ###
-  minimizeRows = ->
+  window.hideNoTransactionsAlert = ->
+    $('#summary_content table').show()
+    $('#summary_content .alert.no-transaction-to-show').hide()
+    if $('#summary_container').hasClass('active')
+      $('.total-display').show()
+
+  window.minimizeRows = ->
     $('.recent tr, .by-month tr.inline').each ->
       if ($(this).height() > 40)
         $(this).addClass('minimized')
@@ -9,6 +15,11 @@ jQuery ($) ->
     if $('#summary_container li.by-month-tab').hasClass('active')
       $('.by-month table tr.grouped-by-day-row, button.minimize-day-transactions').each ->
         $(this).hide()
+
+  window.showNoTransactionsAlert = ->
+    $('#summary_content table').hide()
+    $('#summary_content .alert.no-transaction-to-show').show()
+    $('.total-display').hide() if $('.total-display')
 
   ### Abas: Recente | por Mês | por Ano | Personalizado ###
   $('#content_container').delegate '.nav a', 'click', ->
@@ -82,20 +93,18 @@ jQuery ($) ->
 
   ### Radio-boxes de filtro de transação ###
   $('#content_container').delegate 'form .radio input', 'click', ->
-    $('.transaction, .outgo, .income').hide()
     type = $(this).closest('label').data('filter')
-    if $("tr.#{type}")
-      $('#summary_content .alert.no-transaction-to-show').hide()
+    activeTab = $('#summary_container li.active a').attr('href')
+    if $(".#{activeTab} tr.#{type}").length > 0
+      hideNoTransactionsAlert()
+      $('.transaction, .outgo, .income').hide()
       $('#summary_content table').show()
       $("span.#{type}").show()
       $("tr.#{type}").fadeIn()
+      minimizeRows()
+      $(".total-display .#{type}").hide().fadeIn() if $('.total-display')
     else
-      $('#summary_content table').hide()
-      $('#summary_content .alert.no-transaction-to-show').show()
-    minimizeRows()
-
-    if $('.total-display')
-      $(".total-display .#{type}").hide().fadeIn()
+      showNoTransactionsAlert()
 
   ### Tentativa fail de fazer expansão de linhas com hover ###
   ###
