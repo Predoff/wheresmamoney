@@ -1,14 +1,21 @@
-var currentShowingMonth, currentShowingYear;
+jQuery(function($) {
+  window.refreshDashboard = function(monthToShow, yearToShow) {
+    if ($('#summary_content .period-selector')) {
+      if (!monthToShow) {
+        monthToShow = $('#summary_content .period-selector span.month').data('month');
+      };
 
-window.refreshDashboard = function() {
-  if ($('#summary_content .period-selector')) {
-    currentShowingMonth = $('#summary_content .period-selector span.month').data('month');
-    currentShowingYear = $('#summary_content .period-selector span.year').data('year');
-  $.get($('ul#navgation_menu li.active a').attr('href'), {
-    "selected-month": currentShowingMonth,
-    "selected-year": currentShowingYear
-  });
-  } else {
-    $.get($('ul#navgation_menu li.active a').attr('href'));
-  }
-};
+      if (!yearToShow) {
+        yearToShow = $('#summary_content .period-selector span.year').data('year');
+      };
+
+      $.get($('ul#navgation_menu li.active a').attr('href'), {
+        "selected-month": monthToShow,
+        "selected-year": yearToShow
+      });
+
+    } else {
+      $.get($('ul#navgation_menu li.active a').attr('href'));
+    }
+  };
+});
