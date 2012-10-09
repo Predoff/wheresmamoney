@@ -1,5 +1,6 @@
 - total_value = 0
-- transactions.where(date: Date.today.beginning_of_month..Date.today.end_of_month).each do |t| 
+- date = "#{@year_to_show}-#{@month_to_show}-01".to_date
+- transactions.where(date: date.beginning_of_month..date.end_of_month).each do |t| 
   - if t.type == "Income"
     - total_value += t.value
   - else

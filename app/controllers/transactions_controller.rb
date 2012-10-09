@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
     @months = { :'1' => 'Janeiro', :'2' => 'Fevereiro', :'3' => 'Março', :'4' => 'Abril', :'5' => 'Maio', :'6' => 'Junho', :'7' => 'Julho', :'8' => 'Agosto', :'9' => 'Setembro', :'10' => 'Outubro', :'11' => 'Novembro', :'12' => 'Dezembro'}
   	#Março não funciona porque é UTF-8. Tem que arrumar isso.
 
-    if params[:'selected-month'] 
+    if params[:'selected-month']
       @month_to_show = params[:'selected-month']
     else
       @month_to_show = Date.today.month
