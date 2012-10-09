@@ -1,5 +1,5 @@
 jQuery(function($) {
-  window.refreshDashboard = function(monthToShow, yearToShow) {
+  window.refreshDashboard = function(yearToShow, monthToShow) {
     if ($('#summary_content .period-selector')) {
       if (!monthToShow) {
         monthToShow = $('#summary_content .period-selector span.month').data('month');

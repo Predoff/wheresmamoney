@@ -36,7 +36,7 @@ jQuery ($) ->
     else
       previousMonth = 12
       year -= 1
-    refreshDashboard(previousMonth, year)
+    refreshDashboard(year, previousMonth)
 
   $('#summary_container').delegate 'button.next-month', 'click', ->
     year = $('.period-selector span.year').data('year')
@@ -46,7 +46,7 @@ jQuery ($) ->
     else
       nextMonth = 1
       year += 1
-    refreshDashboard(nextMonth, year)
+    refreshDashboard(year, nextMonth)
 
   ### Expansão e minimização de linhas com conteúdo em overflow ###
   $('#summary_container').delegate "tr.minimized td.description-cell, 
