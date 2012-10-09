@@ -1,13 +1,13 @@
 jQuery ($) ->
 
   ### Funções ###
-  window.hideNoTransactionsAlert = ->
+  hideNoTransactionsAlert = ->
     $('#summary_content table').show()
     $('#summary_content .alert.no-transaction-to-show').hide()
     if $('#summary_container').hasClass('active')
       $('.total-display').show()
 
-  window.minimizeRows = ->
+  minimizeRows = ->
     $('.recent tr, .by-month tr.inline').each ->
       if ($(this).height() > 40)
         $(this).addClass('minimized')
@@ -16,7 +16,7 @@ jQuery ($) ->
       $('.by-month table tr.grouped-by-day-row, button.minimize-day-transactions').each ->
         $(this).hide()
 
-  window.showNoTransactionsAlert = ->
+  showNoTransactionsAlert = ->
     $('#summary_content table').hide()
     $('#summary_content .alert.no-transaction-to-show').show()
     $('.total-display').hide() if $('.total-display')
@@ -39,7 +39,7 @@ jQuery ($) ->
           url: $(this).data('url')
 
   ### Botão de troca de mês em visualização by-month ###
-  $('#summary_container').delegate 'button.previous-month', 'click', ->
+  $('#summary_container').delegate '.by-month button.previous-month', 'click', ->
     year = $('.period-selector span.year').data('year')
     currentMonth = $('.period-selector span.month').data('month')
     if  currentMonth isnt 1
@@ -49,7 +49,7 @@ jQuery ($) ->
       year -= 1
     refreshDashboard(year, previousMonth)
 
-  $('#summary_container').delegate 'button.next-month', 'click', ->
+  $('#summary_container').delegate '.by-month button.next-month', 'click', ->
     year = $('.period-selector span.year').data('year')
     currentMonth = $('.period-selector span.month').data('month')
     if  currentMonth isnt 12

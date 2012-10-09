@@ -1,8 +1,10 @@
 %h2.by-year.invisible
-  %span.transaction Movimentações
-  %span.outgo Gastos
-  %span.income Ganhos
-  %span= title
+  .summary-header.clearfix
+    .period-selector
+      .btn-group.push-left
+        %button.btn.previous-month ‹
+        %button.btn.next-month ›
+      %span.year{:'data-year' => @year_to_show }= @year_to_show
 
 %table.by-year.invisible{ :width => '100%' }
   %tr
