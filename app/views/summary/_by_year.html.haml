@@ -1,4 +1,4 @@
-%h2.by-year.invisible
+.by-year.invisible
   .summary-header.clearfix
     .period-selector
       .btn-group.push-left
@@ -6,9 +6,14 @@
         %button.btn.next-month ›
       %span.year{:'data-year' => @year_to_show }= @year_to_show
 
-%table.by-year.invisible{ :width => '100%' }
-  %tr
-    %td
-      .alert
-        %i.icon-warning-sign
-        = " Em construção."
+  %table.by-year.invisible{ :width => '100%' }
+    %tr
+      %td
+
+  .alert.no-transaction-to-show
+    -# %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+    -# %strong Ops! 
+    -# Você ainda não tem nenhuma movimentação cadastrada neste mês!
+    Página em construção
+
+-# há um bug na mudança de abas: ele não faz a verificação do alerta.
