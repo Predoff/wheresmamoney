@@ -24,12 +24,12 @@ jQuery ($) ->
   ### Abas: Recente | por Mês | por Ano | Personalizado ###
   $('#content_container').delegate '.nav a', 'click', ->
     unless $(this).closest('li').hasClass('active')
-      hideNoTransactionsAlert()
-      $("#filter_container input:checked").click()
+      hideNoTransactionsAlert()      
       $('#content_container .nav li').removeClass('active')
       $(this).closest('li').addClass('active')
       $('.recent, .by-month, .by-year, .custom').addClass('invisible')
       $(".#{$(this).attr('href')}").removeClass('invisible').hide().fadeIn()
+      $("#filter_container input:checked").click()
       minimizeRows()
     false
 
