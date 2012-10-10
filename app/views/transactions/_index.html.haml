@@ -1,6 +1,6 @@
 - months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
 = render :partial =>  'summary/recent', :locals => { :title => ' Recentes' }
-= render :partial =>  'summary/by_month', :locals => { :title => " no mês" }
-= render :partial =>  'summary/by_year', :locals => { :title => " em #{Date.today.year}" }
-= render :partial =>  'summary/custom', :locals => { :title => ' custom' }
+= render :partial =>  'summary/by_month'
+= render :partial =>  'summary/by_year'
+= render :partial =>  'summary/custom', :locals => { :title => ' Busca personalizada' }

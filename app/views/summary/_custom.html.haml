@@ -1,12 +1,11 @@
-%h2.custom.invisible
-  %span.transaction Movimentações
-  %span.outgo Gastos
-  %span.income Ganhos
-  %span= title
+.custom.invisible
+  .summary-header.clearfix
+    %h2{ style: "margin: 0;" }= title
 
-%table.custom.invisible{ :width => '100%' }
-  %tr
-    %td
-      .alert
-        %i.icon-warning-sign
-        = " Em construção."
+  %table.by-year.invisible{ :width => '100%' }
+    %tr
+      %td
+
+  .alert.no-transaction-to-show
+    %i.icon-warning-sign{ style: "margin-right: 5px;" }
+    Página em construção
