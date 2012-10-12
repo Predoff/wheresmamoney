@@ -1,8 +1,8 @@
 class DashboardController < ApplicationController
   def index
-  	@user = User.find(1)
-  	@categories = Category.where(user_id: @user.id).order('name')
-  	@sources = Source.where(user_id: @user.id).order('name')
-  	@tags = Tag.where(user_id: @user.id).order(:name).map { |tag| tag.name }
+  	@user_name = current_user.name
+  	@categories = current_user.categories.order('name')
+  	@sources = current_user.sources.order('name')
+  	@tags = current_user.tags.order(:name).map { |tag| tag.name }
   end
 end
