@@ -1,0 +1,5 @@
+//Carrega partial /extracts/recent/_index"
+$("#extracts_content").html("<%= escape_javascript render(:partial => '/extracts/by_month/index') %>");
+
+//coloca ambos como filtro padrão
+$("input:checked").click();

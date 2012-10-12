@@ -1,5 +1,5 @@
-.by-month.invisible
-  .summary-header.clearfix
+.by-month
+  .extracts-header.clearfix
     .period-selector
       .btn-group.push-left
         %button.btn.previous-month ‹
@@ -7,23 +7,38 @@
       %span.month{:'data-date' => @date_to_show}= l(@date_to_show, :format => :month_year)
     .total-display
       %span.label.label-info= "Total: "
-      %span.income= render :partial => 'summary/total_display', :locals => { :transactions => @incomes }
-      %span.outgo= render :partial => 'summary/total_display', :locals => { :transactions => @outgoes }
-      %span.transaction= render :partial => 'summary/total_display', :locals => { :transactions => @transactions }
+      %span.income
+        %i.icon-arrow-up.icon-green
+        = number_to_currency @total_income
+      %span.outgo
+        %i.icon-arrow-down.icon-red
+        = number_to_currency @total_outgo
+      %span.transaction
+        - if @total_balance > 0
+          %i.icon-arrow-up.icon-green
+        - else
+          %i.icon-arrow-down.icon-red
+        = number_to_currency @total_balance.abs
+
+    = render "includes/filter_by_type_radio"
 
   %table.table.table-condensed.table-hover
     %thead
       %tr
         %th.column-date Data
         %th.column-value Valor
-        %th.column-category= params[:type] == 'Outgo' ? 'Categoria' : params[:type] == 'Income' ? 'Fonte' : 'Categoria/Fonte'
-        %th.column-tags= 'Tags' unless params[:type] == "Income"
+        %th.column-category
+          %span.income Fonte
+          %span.outgo Categoria
+          %span.transaction Categoria/Fonte
+        %th.column-tags
+          %span.outgo.transaction Tags
         %th.column-description Descrição
         %th.column-options
     %tbody
-      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @transactions, :type => 'transaction' }
-      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @incomes, :type => 'income' }
-      = render :partial => 'summary/by_month_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
+      = render :partial => 'extracts/by_month/transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
+      = render :partial => 'extracts/by_month/transactions', :locals => { :transactions => @incomes, :type => 'income' }
+      = render :partial => 'extracts/by_month/transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
 
   .alert.no-transaction-to-show
     %button.close{ :type => "button", :'data-dismiss' => "alert" } ×

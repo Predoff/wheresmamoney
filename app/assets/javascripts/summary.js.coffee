@@ -1,6 +1,6 @@
 jQuery ($) ->
 
-  ### Funções ###
+  # Funções
   hideNoTransactionsAlert = ->
     $('#summary_content table').show()
     $('#summary_content .alert.no-transaction-to-show').hide()
@@ -21,7 +21,7 @@ jQuery ($) ->
     $('#summary_content .alert.no-transaction-to-show').show()
     $('.total-display').hide() if $('.total-display')
 
-  ### Abas: Recente | por Mês | por Ano | Personalizado ###
+  # Abas: Recente | por Mês | por Ano | Personalizado
   $('#content_container').delegate '.nav a', 'click', ->
     unless $(this).closest('li').hasClass('active')
       hideNoTransactionsAlert()      
@@ -33,14 +33,14 @@ jQuery ($) ->
       minimizeRows()
     false
 
-  ### Botão de exclusão de transação ###
+  # Botão de exclusão de transação
   $('#summary_container').delegate '.destroy-transaction', 'click', ->
     if confirm('Tem certeza que deseja excluir esse registro?')
       $.ajax
           type: 'DELETE'
           url: $(this).data('url')
 
-  ### Botão de troca de mês em visualização by-month ###
+  # Botão de troca de mês em visualização by-month
   $('#summary_container').delegate '.by-month button.previous-month', 'click', ->
     date = $('.period-selector span.month').data('date')
     refreshDashboard(date, "previous")
@@ -49,7 +49,7 @@ jQuery ($) ->
     date = $('.period-selector span.month').data('date')
     refreshDashboard(date, "next")
 
-  ### Expansão e minimização de linhas com conteúdo em overflow ###
+  # Expansão e minimização de linhas com conteúdo em overflow
   $('#summary_container').delegate "tr.minimized td.description-cell,
   tr.minimized td.tag-cell,
   tr.expanded td.description-cell,
@@ -59,7 +59,7 @@ jQuery ($) ->
   'click', ->
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
-  ### Expansão e minimização de linhas de dias com mais de uma transação ###
+  # Expansão e minimização de linhas de dias com mais de uma transação
   $('#content_container').delegate 'tr.minimized-day', 'click', ->
     type = 'transaction' if $(this).hasClass('transaction')
     type = 'outgo' if $(this).hasClass('outgo')
@@ -77,12 +77,12 @@ jQuery ($) ->
     $(this).find('button.minimize-day-transactions:first').hide()
     $(this).find('button.expand-day-transactions:first').show()
 
-  ### Hover effect dos botões de expandir e minimizar linhas de dias com mais de uma transação ###
+  # Hover effect dos botões de expandir e minimizar linhas de dias com mais de uma transação
   $('#content_container').delegate 'tr.minimized-day, tr.expanded-day', 'mouseenter mouseleave', ->
     $(this).find('button.expand-day-transactions:first, button.minimize-day-transactions:first').toggleClass('hover')
 
-  ### Radio-boxes de filtro de transação ###
-  $('#content_container').delegate 'form .radio input', 'click', ->
+  # Radio-boxes de filtro de transação
+  $('#content_container').delegate '#summary_container form .radio input', 'click', ->
     type = $(this).closest('label').data('filter')
     activeTab = $('#summary_container li.active a').attr('href')
     if $(".#{activeTab} tr.#{type}").length > 0

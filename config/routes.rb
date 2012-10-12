@@ -6,6 +6,7 @@ Wheresmamoney::Application.routes.draw do
 
   get '/extratos', :controller => 'extracts', :action => 'index'
   get '/extracts/recent'
+  get '/extracts/by_month'
 
   root :to => 'dashboard#index'
 
