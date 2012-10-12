@@ -2,7 +2,7 @@
 class TransactionsController < ApplicationController
   respond_to :js
 
-	def index
+  def index
     #@incomes = Income.includes(:source)
     #@outgoes = Outgo.includes(:tags, :category)
     #@transactions = @outgoes + @incomes
@@ -11,9 +11,13 @@ class TransactionsController < ApplicationController
   	@incomes = @transactions.where(type: 'Income')
     @outgoes = @transactions.where(type: 'Outgo')
 
-    @date_to_show = Date.current
-    #@month_to_show = params[:'selected-month'] || Date.today.month
-    #@year_to_show = params[:'selected-year'] || Date.today.year
+    if params[:date_action] == "previous"
+      date = params[:date].to_date - 1.month
+    elsif params[:date_action] == "next"
+      date = params[:date].to_date + 1.month
+    end
+
+    @date_to_show = date || Date.current
   end
 
   def destroy
