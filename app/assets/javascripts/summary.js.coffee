@@ -29,7 +29,7 @@ jQuery ($) ->
       $(this).closest('li').addClass('active')
       $('.recent, .by-month, .by-year, .custom').addClass('invisible')
       $(".#{$(this).attr('href')}").removeClass('invisible').hide().fadeIn()
-      $("#filter_container input:checked").click()
+      $(".filter_container input:checked").click()
       minimizeRows()
     false
 

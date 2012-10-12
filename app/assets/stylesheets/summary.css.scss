@@ -77,10 +77,6 @@ tr.minimized td.category-source-cell p {
 	width: 90px;
 }
 
-#filter_container {
-	float: right;
-}
-
 #summary_container {
 	form {
 		margin-bottom: 0;
@@ -118,6 +114,10 @@ tr.minimized td.category-source-cell p {
 	width: 20px;
 }
 
+.filter_container {
+	float: right;
+}
+
 .income-row {
 	background-color: #f4fff4;
 }
@@ -144,6 +144,16 @@ tr.minimized td.category-source-cell p {
 
 	.btn-group {
 		margin-right: 10px;
+	}
+}
+
+.summary-header {
+	height: 35px;
+
+	h2 {
+		float: left;
+		margin-bottom: 0;
+		margin-right: 0;
 	}
 }
 
