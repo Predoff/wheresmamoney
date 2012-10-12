@@ -4,16 +4,14 @@
       .btn-group.push-left
         %button.btn.previous-month ‹
         %button.btn.next-month ›
-      %span.month{:'data-month' => @month_to_show }= @months[:"#{@month_to_show}"]
-      = " de "
-      %span.year{:'data-year' => @year_to_show }= @year_to_show
+      %span.month= l(@date_to_show, :format => :month_year)
 
     .total-display
       %span.label.label-info= "Total: "
       %span.income= render :partial => 'summary/total_display', :locals => { :transactions => @incomes }
       %span.outgo= render :partial => 'summary/total_display', :locals => { :transactions => @outgoes }
       %span.transaction= render :partial => 'summary/total_display', :locals => { :transactions => @transactions }
-        
+
   %table.table.table-condensed.table-hover
     %thead
       %tr
@@ -30,5 +28,5 @@
 
   .alert.no-transaction-to-show
     %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
-    %strong Ops! 
+    %strong Ops!
     Você ainda não tem nenhuma movimentação cadastrada neste mês!
