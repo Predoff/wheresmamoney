@@ -1,0 +1,9 @@
+#new_transaction_container
+  %ul.nav.nav-tabs
+    %li#outgoes_tab.active
+      %a{ :'data-url' => new_outgo_url } Gastos
+    %li#incomes_tab
+      %a{ :'data-url' => new_income_url } Ganhos
+  .content-container
+    = render 'outgoes/new'
+    = render 'incomes/new'
