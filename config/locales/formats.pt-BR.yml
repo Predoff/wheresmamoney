@@ -1,0 +1,4 @@
+pt-BR:
+  date:
+    formats:
+      month_year: "%B de %Y"
