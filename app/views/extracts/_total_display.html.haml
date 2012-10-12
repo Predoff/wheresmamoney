@@ -1,0 +1,11 @@
+- total_value = 0
+- transactions.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).each do |t|
+  - if t.type == "Income"
+    - total_value += t.value
+  - else
+    - total_value -= t.value
+- if total_value <= 0
+  %i.icon-arrow-down.icon-red
+- else
+  %i.icon-arrow-up.icon-green
+= number_to_currency total_value.abs

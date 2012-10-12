@@ -1,0 +1,65 @@
+- transactions.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).group_by(&:date).each do |transactions_by_date|
+  - transactions_date = transactions_by_date.first
+  - transactions = transactions_by_date.last
+  -if transactions.size == 1
+    - transaction = transactions.first
+    %tr.inline{ :'data-transaction-id' => transaction.id, :class => "#{type}" }
+      %td= l  transactions_date
+      %td
+        - if transaction.type == 'Outgo' 
+          %i.icon-arrow-down.icon-red
+        - elsif transaction.type == 'Income' 
+          %i.icon-arrow-up.icon-green
+        = number_to_currency transaction.value
+      %td.category-source-cell
+        %p= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
+      %td.tag-cell
+        %p
+          - if transaction.type == 'Outgo'
+            - transaction.tags.each do |tag| 
+              %i.icon-tag
+              %span.tag= tag.name
+      %td.description-cell
+        %p= transaction.description
+      %td.column-options
+        %button.destroy-transaction{ :'data-url' => transaction_path(transactions) } ×
+  -else
+    %tr.minimized-day{ :class => "#{type}", :'data-transactions-date' => transactions_date}
+      %td= l transactions_date
+      %td
+        - total = 0
+        - transactions.each do |t|
+          - if t.type == "Income" 
+            - total = total + t.value 
+          - else 
+            - total = total - t.value
+        - if total <= 0
+          %i.icon-arrow-down.icon-red 
+        - else 
+          %i.icon-arrow-up.icon-green
+        = number_to_currency total.abs
+      %td{ colspan: '3' }
+        .transactions-counter-cell= "(#{transactions.size} transações)"
+      %td.column-options
+        %button.expand-day-transactions &#8964;
+        %button.minimize-day-transactions &#8963;
+    - transactions.each do |transaction|
+      %tr.grouped-by-day-row{ :'data-transaction-id' => transaction.id, :class => "#{type} #{transactions_date}-transaction-row" }
+        %td
+        %td
+          - if transaction.type == 'Outgo' 
+            %i.icon-arrow-down.icon-red
+          - else
+            %i.icon-arrow-up.icon-green
+          = number_to_currency transaction.value
+        %td= transaction.type == 'Outgo' ? transaction.category.name : transaction.source.name
+        %td.tag-cell
+          %p
+            - if transaction.type == 'Outgo'
+              - transaction.tags.each do |tag| 
+                %i.icon-tag
+                %span.tag= tag.name
+        %td.description-cell
+          %p= transaction.description
+        %td.column-options
+          %button.destroy-transaction{ :'data-url' => transaction_path(transaction) } ×

@@ -4,6 +4,8 @@ Wheresmamoney::Application.routes.draw do
   resources :outgoes
   resources :transactions
 
+  get '/extratos', :controller => 'extracts', :action => 'index'
+
   root :to => 'dashboard#index'
 
   # The priority is based upon order of creation:

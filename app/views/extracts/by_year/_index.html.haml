@@ -1,0 +1,18 @@
+.by-year.invisible
+  .summary-header.clearfix
+    .period-selector
+      .btn-group.push-left
+        %button.btn.previous-month ‹
+        %button.btn.next-month ›
+      %span.year{:'data-year' => @date_to_show.to_date.year }= @date_to_show.to_date.year
+
+  %table.by-year.invisible{ :width => '100%' }
+    %tr
+      %td
+
+  .alert.no-transaction-to-show
+    -# %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+    -# %strong Ops! 
+    -# Você ainda não tem nenhuma movimentação cadastrada neste ano!
+    %i.icon-warning-sign{ style: "margin-right: 5px;" }
+    Página em construção
