@@ -7,7 +7,13 @@ class TransactionsController < ApplicationController
 	@incomes = @transactions.where(type: 'Income')
     @outgoes = @transactions.where(type: 'Outgo')
 
-    @date_to_show = Date.current
+    if params[:date_action] == "previous"
+      date = params[:date].to_date - 1.month
+    elsif params[:date_action] == "next"
+      date = params[:date].to_date + 1.month
+    end
+
+    @date_to_show = date || Date.current
   end
 
   def destroy

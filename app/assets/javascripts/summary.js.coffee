@@ -11,7 +11,7 @@ jQuery ($) ->
     $('.recent tr, .by-month tr.inline').each ->
       if ($(this).height() > 40)
         $(this).addClass('minimized')
-        
+
     if $('#summary_container li.by-month-tab').hasClass('active')
       $('.by-month table tr.grouped-by-day-row, button.minimize-day-transactions').each ->
         $(this).hide()
@@ -34,39 +34,27 @@ jQuery ($) ->
   ### Botão de exclusão de transação ###
   $('#summary_container').delegate '.destroy-transaction', 'click', ->
     if confirm('Tem certeza que deseja excluir esse registro?')
-      $.ajax 
+      $.ajax
           type: 'DELETE'
           url: $(this).data('url')
 
   ### Botão de troca de mês em visualização by-month ###
   $('#summary_container').delegate '.by-month button.previous-month', 'click', ->
-    year = $('.period-selector span.year').data('year')
-    currentMonth = $('.period-selector span.month').data('month')
-    if  currentMonth isnt 1
-      previousMonth = currentMonth - 1
-    else
-      previousMonth = 12
-      year -= 1
-    refreshDashboard(year, previousMonth)
+    date = $('.period-selector span.month').data('date')
+    refreshDashboard(date, "previous")
 
   $('#summary_container').delegate '.by-month button.next-month', 'click', ->
-    year = $('.period-selector span.year').data('year')
-    currentMonth = $('.period-selector span.month').data('month')
-    if  currentMonth isnt 12
-      nextMonth = currentMonth + 1
-    else
-      nextMonth = 1
-      year += 1
-    refreshDashboard(year, nextMonth)
+    date = $('.period-selector span.month').data('date')
+    refreshDashboard(date, "next")
 
   ### Expansão e minimização de linhas com conteúdo em overflow ###
-  $('#summary_container').delegate "tr.minimized td.description-cell, 
-  tr.minimized td.tag-cell, 
-  tr.expanded td.description-cell, 
+  $('#summary_container').delegate "tr.minimized td.description-cell,
+  tr.minimized td.tag-cell,
+  tr.expanded td.description-cell,
   tr.expanded td.tag-cell,
   tr.minimized td.category-source-cell,
-  tr.expanded td.category-source-cell", 
-  'click', -> 
+  tr.expanded td.category-source-cell",
+  'click', ->
     $(this).closest('tr').toggleClass('expanded').toggleClass('minimized')
 
   ### Expansão e minimização de linhas de dias com mais de uma transação ###
