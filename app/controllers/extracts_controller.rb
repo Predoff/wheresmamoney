@@ -18,5 +18,8 @@ class ExtractsController < ApplicationController
 	end
 
 	def recent
+		@incomes = current_user.incomes.limit(12).group_by(&:date)
+		@outgoes = current_user.outgoes.limit(12).group_by(&:date)
+		@transactions = Transaction.where(user_id: current_user.id).limit(12).group_by(&:date)
 	end
 end

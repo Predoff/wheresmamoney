@@ -5,6 +5,7 @@ Wheresmamoney::Application.routes.draw do
   resources :transactions
 
   get '/extratos', :controller => 'extracts', :action => 'index'
+  get '/extracts/recent'
 
   root :to => 'dashboard#index'
 

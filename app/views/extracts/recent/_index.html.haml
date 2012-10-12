@@ -1,10 +1,11 @@
-.recent.invisible
+.recent
   .summary-header
     %h2
       %span.transaction Movimentações
       %span.outgo Gastos
       %span.income Ganhos
-      %span= title
+      %span recentes
+    = render "includes/filter_by_type_radio"
 
   %table.table.table-condensed.table-hover
     %thead
@@ -16,9 +17,9 @@
         %th.column-description Descrição
         %th.column-options
     %tbody
-      = render :partial => 'summary/recent_transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
-      = render :partial => 'summary/recent_transactions', :locals => { :transactions => @incomes, :type => 'income' }
-      = render :partial => 'summary/recent_transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
+      = render :partial => 'extracts/recent/transactions', :locals => { :transactions => @transactions, :type => 'transaction'}
+      = render :partial => 'extracts/recent/transactions', :locals => { :transactions => @incomes, :type => 'income' }
+      = render :partial => 'extracts/recent/transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
 
   .alert.no-transaction-to-show
     %button.close{ :type => "button", :'data-dismiss' => "alert" } ×

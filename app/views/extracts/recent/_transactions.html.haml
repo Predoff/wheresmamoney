@@ -1,4 +1,4 @@
-- transactions.limit(12).group_by(&:date).each do |transactions_by_date|
+- transactions.each do |transactions_by_date|
   - transactions_date = transactions_by_date.first
   - transactions = transactions_by_date.last
   -if transactions.size == 1
