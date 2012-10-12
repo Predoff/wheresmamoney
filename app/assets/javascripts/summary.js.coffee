@@ -4,7 +4,7 @@ jQuery ($) ->
   hideNoTransactionsAlert = ->
     $('#summary_content table').show()
     $('#summary_content .alert.no-transaction-to-show').hide()
-    if $('#summary_container').hasClass('active')
+    if $('#summary_container li.by-month-tab').hasClass('active')
       $('.total-display').show()
 
   minimizeRows = ->
