@@ -41,6 +41,5 @@
       = render :partial => 'extracts/by_month/transactions', :locals => { :transactions => @outgoes, :type => 'outgo' }
 
   .alert.no-transaction-to-show
-    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
     %strong Ops!
     Você ainda não tem nenhuma movimentação cadastrada neste mês!
