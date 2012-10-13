@@ -2,7 +2,7 @@ jQuery ($) ->
 
   # Funções
   hideNoTransactionsAlert = ->
-    $('#extracts_content table').hide().fadeIn()
+    $('#extracts_content table').show()
     $('#extracts_content .alert.no-transaction-to-show').hide()
     if $('#extracts_container li.by-month-tab').hasClass('active')
       $('.total-display').show()

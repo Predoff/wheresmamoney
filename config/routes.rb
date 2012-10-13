@@ -5,9 +5,10 @@ Wheresmamoney::Application.routes.draw do
   resources :transactions
 
   get '/extratos', :controller => 'extracts', :action => 'index'
-  get '/extracts/recent'
   get '/extracts/by_month'
   get '/extracts/by_year'
+  get '/extracts/custom'
+  get '/extracts/recent'
 
   root :to => 'extracts#index'
 
