@@ -73,9 +73,17 @@ class ExtractsController < ApplicationController
       @lines_to_print[date][1] = total
     end
 
+    @total_income = 0
+    @total_outgo = 0
+
     @lines_to_print.each do |line_to_print|
       line_to_print.last[2] = line_to_print.last[0] - line_to_print.last[1]
+
+      @total_income += line_to_print.last[0]
+      @total_outgo += line_to_print.last[1]
     end
+
+    @total_balance = @total_income - @total_outgo
     #fim da porquisses master que dpeois eu arrumo
 
   end

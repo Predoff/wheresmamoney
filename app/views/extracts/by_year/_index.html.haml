@@ -1,20 +1,12 @@
 .by-year
-  .summary-header.clearfix
+  .extracts-header.clearfix
     .period-selector
       .btn-group.push-left
         %button.btn.previous-month ‹
         %button.btn.next-month ›
       %span.year{:'data-year' => @date_to_show.to_date.year }= @date_to_show.to_date.year
-    .total-display
-      -# %span.label.label-info= "Total: "
-      -# %span
-        - if @total_balance > 0
-          %i.icon-arrow-up.icon-green
-        - else
-          %i.icon-arrow-down.icon-red
-        = number_to_currency @total_balance.abs
 
-  %table.table.table-condensed.table-hover.by-year{ :width => '100%' }
+  %table.table.table-condensed.table-hover
     %thead
       %tr
         %th
@@ -22,8 +14,24 @@
         %th Gasto
         %th Balanço
     %tbody
+      %tr.total-display
+        %th
+          %span.label.label-info Total
+        %td
+          %i.icon-arrow-up.icon-green
+          = number_to_currency @total_income
+        %td
+          %i.icon-arrow-down.icon-red
+          = number_to_currency @total_outgo
+        %td
+          - if @total_balance > 0
+            %i.icon-arrow-up.icon-green
+          - else
+            %i.icon-arrow-down.icon-red
+          = number_to_currency @total_balance.abs
+
       - @lines_to_print.each do |line_to_print|
-        %tr
+        %tr{ :'data-first-day-of-month-date' => line_to_print.first }
           %th= l(line_to_print.first, :format => :only_month)
           %td
             %i.icon-arrow-up.icon-green

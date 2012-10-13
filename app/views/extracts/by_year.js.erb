@@ -1,2 +1,7 @@
-//Carrega partial /extracts/by_year/_index"
-$("#extracts_content").html("<%= escape_javascript render(:partial => '/extracts/by_year/index') %>");
+jQuery( function($){
+	//Carrega partial /extracts/by_year/_index"
+	$("#extracts_content").html("<%= escape_javascript render(:partial => '/extracts/by_year/index') %>");
+
+	$('.period-selector span.year').hide().fadeIn();
+	$('table').hide().fadeIn();
+});
