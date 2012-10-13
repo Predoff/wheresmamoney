@@ -78,9 +78,10 @@ jQuery ($) ->
     $(this).find('button.expand-day-transactions:first').show()
 
   # Hover effect dos botões de expandir e minimizar linhas de dias com mais de uma transação
+  ###
   $('#content_container').delegate 'tr.minimized-day, tr.expanded-day', 'mouseenter mouseleave', ->
     $(this).find('button.expand-day-transactions:first, button.minimize-day-transactions:first').toggleClass('hover')
-
+  ###
   # Radio-boxes de filtro de transação
   $('#content_container').delegate '#summary_container form .radio input', 'click', ->
     type = $(this).closest('label').data('filter')
