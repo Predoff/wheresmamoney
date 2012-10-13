@@ -1,7 +1,13 @@
 jQuery( function($){
+	
 	//Carrega partial /extracts/by_year/_index"
 	$("#extracts_content").html("<%= escape_javascript render(:partial => '/extracts/by_year/index') %>");
 
-	$('.period-selector span.year').hide().fadeIn();
-	$('table').hide().fadeIn();
+	if($('tr').length > 2) {
+		$('#extracts_content .alert.no-transaction-to-show').hide();
+	  $('#extracts_content table').hide().fadeIn();
+	} else {
+		$('#extracts_content table').hide();
+	  $('#extracts_content .alert.no-transaction-to-show').hide().fadeIn();
+	}
 });

@@ -2,7 +2,7 @@ jQuery ($) ->
 
   # Funções
   hideNoTransactionsAlert = ->
-    $('#extracts_content table').show()
+    $('#extracts_content table').hide().fadeIn()
     $('#extracts_content .alert.no-transaction-to-show').hide()
     if $('#extracts_container li.by-month-tab').hasClass('active')
       $('.total-display').show()
@@ -18,7 +18,7 @@ jQuery ($) ->
 
   showNoTransactionsAlert = ->
     $('#extracts_content table').hide()
-    $('#extracts_content .alert.no-transaction-to-show').show()
+    $('#extracts_content .alert.no-transaction-to-show').hide().fadeIn()
     $('.total-display').hide() if $('.total-display')
 
   # Carrega automaticamente ajax da aba ativa
