@@ -27,7 +27,6 @@ class ExtractsController < ApplicationController
     @total_outgo = total
 
     @total_balance = @total_income - @total_outgo
-
   end
 
   def by_year
