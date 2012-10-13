@@ -21,10 +21,6 @@ jQuery ($) ->
     $('#extracts_content .alert.no-transaction-to-show').show()
     $('.total-display').hide() if $('.total-display')
 
-
-  # Verifica se a página ativa é a de extratos
-  #if $('#extracts_container').length > 0
-
   # Carrega automaticamente ajax da aba ativa
   loadContent()  
 
@@ -46,12 +42,21 @@ jQuery ($) ->
 
   # Botão de troca de mês em visualização by-month
   $('#content_container').delegate '.by-month button.previous-month', 'click', ->
-    date = $('.period-selector span.month').data('date')
+    date = $('.period-selector span.date').data('date')
     loadContent(date, "previous")
 
   $('#content_container').delegate '.by-month button.next-month', 'click', ->
-    date = $('.period-selector span.month').data('date')
+    date = $('.period-selector span.date').data('date')
     loadContent(date, "next")
+
+  # Botão de troca de mês em visualização by-year
+  $('#content_container').delegate '.by-year button.previous-year', 'click', ->
+    date = $('.period-selector span.date').data('date')
+    loadContent(date, "previous")
+
+  $('#content_container').delegate '.by-year button.next-year', 'click', ->
+    date = $('.period-selector span.date').data('date')
+    loadContent(date, "next")  
 
   # Expansão e minimização de linhas com conteúdo em overflow
   $('#summary_container').delegate "tr.minimized td.description-cell,

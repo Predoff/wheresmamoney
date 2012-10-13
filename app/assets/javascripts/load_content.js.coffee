@@ -5,12 +5,10 @@ window.loadContent = (date, date_action) ->
 		if activeNavLink is '/extratos'
 	    activeTabLink = $('#extracts_container ul.nav li.active a').attr('href')
 
-	    if $('#extracts_container li.by-month-tab').hasClass('active')
+	    if $('li.by-month-tab').hasClass('active') or $('li.by-year-tab').hasClass('active')
 
-        if $('.period-selector span.month').length > 0
-          date = $('.period-selector span.month').data('date') if not date?
+        if not date? then date = $('.period-selector span.date').data('date')
 
-        console.log date
         $.get "/extracts/#{activeTabLink}",
           date: date
           date_action: date_action

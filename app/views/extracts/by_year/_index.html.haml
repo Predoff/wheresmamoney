@@ -2,9 +2,9 @@
   .extracts-header.clearfix
     .period-selector
       .btn-group.push-left
-        %button.btn.previous-month ‹
-        %button.btn.next-month ›
-      %span.year{:'data-year' => @date_to_show.to_date.year }= @date_to_show.to_date.year
+        %button.btn.previous-year ‹
+        %button.btn.next-year ›
+      %span.date{ :'data-date' => @date_to_show }= @date_to_show.to_date.year
 
   %table.table.table-condensed.table-hover
     %thead
