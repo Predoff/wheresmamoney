@@ -1,9 +1,0 @@
-$("#summary_content").html("<%= escape_javascript render(:partial => 'index') %>");
-
-//Tira invisible
-var activeTabHref;
-activeTabHref = $('#summary_container li.active a').attr('href');
-$("." + activeTabHref).removeClass('invisible').hide().fadeIn();
-
-//coloca ambos como filtro padrão
-$("input:checked").click();

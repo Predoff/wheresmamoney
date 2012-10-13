@@ -1,4 +1,5 @@
 class IncomesController < ApplicationController
+	
   def create
     params[:income][:value] = params[:income][:value].gsub(',', '.')
 

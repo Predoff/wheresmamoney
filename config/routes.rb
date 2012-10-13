@@ -8,7 +8,7 @@ Wheresmamoney::Application.routes.draw do
   get '/extracts/recent'
   get '/extracts/by_month'
 
-  root :to => 'dashboard#index'
+  root :to => 'extracts#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

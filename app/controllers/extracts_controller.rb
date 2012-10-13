@@ -6,6 +6,8 @@ class ExtractsController < ApplicationController
       date = params[:date].to_date - 1.month
     elsif params[:date_action] == "next"
       date = params[:date].to_date + 1.month
+    elsif params[:date]
+      date = params[:date].to_date
     end
 
     @date_to_show = date || Date.current
@@ -48,3 +50,12 @@ class ExtractsController < ApplicationController
     @transactions = Transaction.where(user_id: current_user.id).order("date DESC").limit(12).group_by(&:date)
   end
 end
+
+# Examinar se se aplica ao meu sistema esse tipo de funcionalidade e implementar
+#
+# if stale? (:etag => [objeto1, objeto2]) 
+# (:last_modified => objeto.updated_at.udt)
+#
+# (:etag => objetoactiverecord_que eu quero saber se mudou alguma coisa ou não)
+#
+# fresh_when (:etag => objetoactiverecord_que eu quero saber se mudou alguma coisa ou não)
