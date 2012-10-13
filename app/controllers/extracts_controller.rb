@@ -32,6 +32,52 @@ class ExtractsController < ApplicationController
   end
 
   def by_year
+    if params[:date_action] == "previous"
+      date = params[:date].to_date - 1.year
+    elsif params[:date_action] == "next"
+      date = params[:date].to_date + 1.year
+    elsif params[:date]
+      date = params[:date].to_date
+    end
+
+    @date_to_show = date || Date.current
+
+    incomes = current_user.incomes.where(date: @date_to_show.beginning_of_year..@date_to_show.end_of_year).order("date DESC").group_by{ |income| income.date.month }
+    outgoes = current_user.outgoes.where(date: @date_to_show.beginning_of_year..@date_to_show.end_of_year).order("date DESC").group_by{ |outgo| outgo.date.month }
+
+
+    #porquisses master daqui pra baixo que depois eu arrumo
+    @lines_to_print = {}
+    date = Date.today
+
+    incomes.each do |incomes_by_month|
+      transactions_in_this_month = incomes_by_month.last
+      date = transactions_in_this_month.first.date.beginning_of_month
+      total = 0
+
+      transactions_in_this_month.each do |transaction|
+        total += transaction.value
+      end
+      @lines_to_print[date] = []
+      @lines_to_print[date][0] = total
+    end
+
+    outgoes.each do |outgoes_by_month|
+      transactions_in_this_month = outgoes_by_month.last
+      date = transactions_in_this_month.first.date.beginning_of_month
+      total = 0
+
+      transactions_in_this_month.each do |transaction|
+        total += transaction.value
+      end
+      @lines_to_print[date][1] = total
+    end
+
+    @lines_to_print.each do |line_to_print|
+      line_to_print.last[2] = line_to_print.last[0] - line_to_print.last[1]
+    end
+    #fim da porquisses master que dpeois eu arrumo
+
   end
 
   def custom

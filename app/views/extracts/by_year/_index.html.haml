@@ -1,18 +1,44 @@
-.by-year.invisible
+.by-year
   .summary-header.clearfix
     .period-selector
       .btn-group.push-left
         %button.btn.previous-month ‹
         %button.btn.next-month ›
       %span.year{:'data-year' => @date_to_show.to_date.year }= @date_to_show.to_date.year
+    .total-display
+      -# %span.label.label-info= "Total: "
+      -# %span
+        - if @total_balance > 0
+          %i.icon-arrow-up.icon-green
+        - else
+          %i.icon-arrow-down.icon-red
+        = number_to_currency @total_balance.abs
 
-  %table.by-year.invisible{ :width => '100%' }
-    %tr
-      %td
+  %table.table.table-condensed.table-hover.by-year{ :width => '100%' }
+    %thead
+      %tr
+        %th
+        %th Ganho
+        %th Gasto
+        %th Balanço
+    %tbody
+      - @lines_to_print.each do |line_to_print|
+        %tr
+          %th= l(line_to_print.first, :format => :only_month)
+          %td
+            %i.icon-arrow-up.icon-green
+            = number_to_currency line_to_print.last[0]
+          %td
+            %i.icon-arrow-down.icon-red
+            = number_to_currency line_to_print.last[1]
+          %td
+            -if line_to_print.last[2] > 0
+              %i.icon-arrow-up.icon-green
+            - else
+              %i.icon-arrow-down.icon-red
+            = number_to_currency line_to_print.last[2].abs
 
-  .alert.no-transaction-to-show
-    -# %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
-    -# %strong Ops! 
-    -# Você ainda não tem nenhuma movimentação cadastrada neste ano!
-    %i.icon-warning-sign{ style: "margin-right: 5px;" }
-    Página em construção
+  -# .alert.no-transaction-to-show
+    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
+    %strong Ops! 
+    Você ainda não tem nenhuma movimentação cadastrada neste ano!

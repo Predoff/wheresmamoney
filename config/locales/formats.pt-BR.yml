@@ -2,3 +2,4 @@ pt-BR:
   date:
     formats:
       month_year: "%B de %Y"
+      only_month: "%B"
