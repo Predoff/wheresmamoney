@@ -2,8 +2,8 @@
   .extracts-header.clearfix
     .period-selector
       .btn-group.push-left
-        %button.btn.previous-year ‹
-        %button.btn.next-year ›
+        %button.btn.previous ‹
+        %button.btn.next ›
       %span.date{ :'data-date' => @date_to_show }= @date_to_show.to_date.year
 
   %table.table.table-condensed.table-hover
@@ -47,6 +47,5 @@
             = number_to_currency line_to_print.last[2].abs
 
   -# .alert.no-transaction-to-show
-    %button.close{ :type => "button", :'data-dismiss' => "alert" } ×
     %strong Ops! 
     Você ainda não tem nenhuma movimentação cadastrada neste ano!

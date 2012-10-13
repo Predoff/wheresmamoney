@@ -40,23 +40,14 @@ jQuery ($) ->
           type: 'DELETE'
           url: $(this).data('url')
 
-  # Botão de troca de mês em visualização by-month
-  $('#content_container').delegate '.by-month button.previous-month', 'click', ->
+  # Botões de troca de período em visualização by-month e by-year
+  $('#content_container').delegate '.period-selector button.previous', 'click', ->
     date = $('.period-selector span.date').data('date')
     loadContent(date, "previous")
 
-  $('#content_container').delegate '.by-month button.next-month', 'click', ->
+  $('#content_container').delegate '.period-selector button.next', 'click', ->
     date = $('.period-selector span.date').data('date')
     loadContent(date, "next")
-
-  # Botão de troca de mês em visualização by-year
-  $('#content_container').delegate '.by-year button.previous-year', 'click', ->
-    date = $('.period-selector span.date').data('date')
-    loadContent(date, "previous")
-
-  $('#content_container').delegate '.by-year button.next-year', 'click', ->
-    date = $('.period-selector span.date').data('date')
-    loadContent(date, "next")  
 
   # Expansão e minimização de linhas com conteúdo em overflow
   $('#summary_container').delegate "tr.minimized td.description-cell,
