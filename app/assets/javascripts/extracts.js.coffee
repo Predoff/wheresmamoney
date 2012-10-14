@@ -50,7 +50,7 @@ jQuery ($) ->
     loadContent(date, "next")
 
   # Expansão e minimização de linhas com conteúdo em overflow
-  $('#summary_container').delegate "tr.minimized td.description-cell,
+  $('#extracts_container').delegate "tr.minimized td.description-cell,
   tr.minimized td.tag-cell,
   tr.expanded td.description-cell,
   tr.expanded td.tag-cell,
