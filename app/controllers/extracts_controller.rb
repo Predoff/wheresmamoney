@@ -4,9 +4,10 @@ class ExtractsController < ApplicationController
 	
   def by_month
 
-    @incomes = current_user.incomes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
-    @outgoes = current_user.outgoes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
-    @transactions = Transaction.where(user_id: current_user.id).where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
+    transactions = current_user.transactions.by_month(date_to_show).order("date DESC")
+    @incomes = transactions.income.group_by(&:date)
+    @outgoes = transactions.outgo.group_by(&:date)
+    @transactions = transactions.group_by(&:date)
 
     total = 0
     current_user.incomes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).each do |i|
@@ -25,13 +26,13 @@ class ExtractsController < ApplicationController
 
   def by_year
 
-    incomes = current_user.incomes.where(date: date_to_show.beginning_of_year..date_to_show.end_of_year).order("date DESC").group_by{ |income| income.date.month }
-    outgoes = current_user.outgoes.where(date: date_to_show.beginning_of_year..date_to_show.end_of_year).order("date DESC").group_by{ |outgo| outgo.date.month }
-
+    transactions = current_user.transactions.by_year(date_to_show).order("date DESC")
+    incomes = transactions.income.group_by{ |income| income.date.month }
+    outgoes = transactions.outgo.group_by{ |outgo| outgo.date.month }
 
     #porquisses master daqui pra baixo que depois eu arrumo
     @lines_to_print = {}
-    date = Date.today
+    date = Date.current
 
     incomes.each do |incomes_by_month|
       transactions_in_this_month = incomes_by_month.last
@@ -78,13 +79,14 @@ class ExtractsController < ApplicationController
     @user_name = current_user.name
     @categories = current_user.categories.order('name')
     @sources = current_user.sources.order('name')
-    @tags = current_user.tags.order(:name).map { |tag| tag.name }
+    @tags = current_user.tags.order(:name).map{ |tag| tag.name }
   end
 
   def recent
-    @incomes = current_user.incomes.order("date DESC").limit(12).group_by(&:date)
-    @outgoes = current_user.outgoes.order("date DESC").limit(12).group_by(&:date)
-    @transactions = Transaction.where(user_id: current_user.id).order("date DESC").limit(12).group_by(&:date)
+    transactions = current_user.transactions.order("date DESC")
+    @incomes = transactions.income.limit(12).group_by(&:date)
+    @outgoes = transactions.outgo.limit(12).group_by(&:date)
+    @transactions = transactions.limit(12).group_by(&:date)
   end
 
   def date_to_show
