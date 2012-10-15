@@ -1,29 +1,21 @@
 class ExtractsController < ApplicationController
   respond_to :js
+  helper_method :date_to_show
 	
   def by_month
-    if params[:date_action] == "previous"
-      date = params[:date].to_date - 1.month
-    elsif params[:date_action] == "next"
-      date = params[:date].to_date + 1.month
-    elsif params[:date]
-      date = params[:date].to_date
-    end
 
-    @date_to_show = date || Date.current
-
-    @incomes = current_user.incomes.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).order("date DESC").group_by(&:date)
-    @outgoes = current_user.outgoes.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).order("date DESC").group_by(&:date)
-    @transactions = Transaction.where(user_id: current_user.id).where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).order("date DESC").group_by(&:date)
+    @incomes = current_user.incomes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
+    @outgoes = current_user.outgoes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
+    @transactions = Transaction.where(user_id: current_user.id).where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).order("date DESC").group_by(&:date)
 
     total = 0
-    current_user.incomes.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).each do |i|
+    current_user.incomes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).each do |i|
       total += i.value
     end
     @total_income = total
 
     total = 0
-    current_user.outgoes.where(date: @date_to_show.beginning_of_month..@date_to_show.end_of_month).each do |o|
+    current_user.outgoes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).each do |o|
       total += o.value
     end
     @total_outgo = total
@@ -32,18 +24,9 @@ class ExtractsController < ApplicationController
   end
 
   def by_year
-    if params[:date_action] == "previous"
-      date = params[:date].to_date - 1.year
-    elsif params[:date_action] == "next"
-      date = params[:date].to_date + 1.year
-    elsif params[:date]
-      date = params[:date].to_date
-    end
 
-    @date_to_show = date || Date.current
-
-    incomes = current_user.incomes.where(date: @date_to_show.beginning_of_year..@date_to_show.end_of_year).order("date DESC").group_by{ |income| income.date.month }
-    outgoes = current_user.outgoes.where(date: @date_to_show.beginning_of_year..@date_to_show.end_of_year).order("date DESC").group_by{ |outgo| outgo.date.month }
+    incomes = current_user.incomes.where(date: date_to_show.beginning_of_year..date_to_show.end_of_year).order("date DESC").group_by{ |income| income.date.month }
+    outgoes = current_user.outgoes.where(date: date_to_show.beginning_of_year..date_to_show.end_of_year).order("date DESC").group_by{ |outgo| outgo.date.month }
 
 
     #porquisses master daqui pra baixo que depois eu arrumo
@@ -102,6 +85,18 @@ class ExtractsController < ApplicationController
     @incomes = current_user.incomes.order("date DESC").limit(12).group_by(&:date)
     @outgoes = current_user.outgoes.order("date DESC").limit(12).group_by(&:date)
     @transactions = Transaction.where(user_id: current_user.id).order("date DESC").limit(12).group_by(&:date)
+  end
+
+  def date_to_show
+    @date_to_show ||= if params[:date_action] == "previous"
+      params[:date].to_date - (action_name == "by_month" ? 1.month : 1.year)
+    elsif params[:date_action] == "next"
+      params[:date].to_date + (action_name == "by_month" ? 1.month : 1.year)
+    elsif params[:date]
+      params[:date].to_date
+    else
+      Date.current
+    end
   end
 end
 

@@ -4,7 +4,7 @@
       .btn-group.push-left
         %button.btn.previous ‹
         %button.btn.next ›
-      %span.date{ :'data-date' => @date_to_show }= l(@date_to_show, :format => :month_year)
+      %span.date{ :'data-date' => date_to_show }= l(date_to_show, :format => :month_year)
     .total-display
       %span.label.label-info Total:
       %span.income
