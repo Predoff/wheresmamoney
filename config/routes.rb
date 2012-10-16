@@ -4,11 +4,11 @@ Wheresmamoney::Application.routes.draw do
   resources :outgoes
   resources :transactions
 
-  get '/extratos', :controller => 'extracts', :action => 'index'
-  get '/extracts/by_month'
-  get '/extracts/by_year'
-  get '/extracts/custom'
-  get '/extracts/recent'
+  get 'extratos' => 'extracts#index', :as => 'extratos'
+  get 'extracts/by_month'
+  get 'extracts/by_year'
+  get 'extracts/custom'
+  get 'extracts/recent'
 
   root :to => 'extracts#index'
 
