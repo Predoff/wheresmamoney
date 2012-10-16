@@ -38,6 +38,6 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'haml'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 gem 'twitter-bootstrap-rails'
 gem 'select2-rails'

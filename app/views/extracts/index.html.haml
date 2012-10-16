@@ -1,14 +1,19 @@
-#extracts_container
-  %ul.nav.nav-tabs
-    %li.recent-tabs.active
-      %a{ href: 'recent' } Recente
-    %li.by-month-tab
-      %a{ href: 'by_month' } no Mês
-    %li.by-year-tab
-      %a{ href: 'by_year' } no Ano
-    %li.custom-tab
-      %a{ href: 'custom' } Personalizado 
+= render 'includes/header'
 
-  .content-container
-    #extracts_content
-      -# conteudo carregado por extracts.js.coffee de acordo com a aba ativa
+#container.container.clearfix
+  = render 'includes/new_transaction'
+  #content_container
+    #extracts_container
+      %ul.nav.nav-tabs
+        %li.recent-tabs.active
+          %a{ href: 'recent' } Recente
+        %li.by-month-tab
+          %a{ href: 'by_month' } no Mês
+        %li.by-year-tab
+          %a{ href: 'by_year' } no Ano
+        %li.custom-tab
+          %a{ href: 'custom' } Personalizado 
+
+      .content-container
+        #extracts_content
+          -# conteudo carregado por extracts.js.coffee de acordo com a aba ativa

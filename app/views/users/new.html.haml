@@ -1,7 +1,7 @@
 %h2 Cadastro
 
 = form_for @user do |f|
-	- if @user.error.any?
+	- if @user.errors.any?
 		.error-message
 			%h3 Não rolou, brother. Revê os esquemas aí.
 			%ul
@@ -9,17 +9,17 @@
 					%li= message
 
 	%p
-		= f.label :name
+		= f.label :name, "Nome"
 		= f.text_field :name
 	%p
-		= f.label :email
+		= f.label :email, "E-mail"
 		= f.text_field :email
 	%p
-		= f.label :password
+		= f.label :password, "Senha"
 		= f.password_field :password
 
 	%p
-		= f.label :password_confirmation
+		= f.label :password_confirmation, "Confirmação de senha"
 		= f.password_field :password_confirmation
 
 	= f.submit
