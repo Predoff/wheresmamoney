@@ -3,8 +3,9 @@ Wheresmamoney::Application.routes.draw do
   resources :incomes
   resources :outgoes
   resources :transactions
+  resources :users
 
-  get 'extratos' => 'extracts#index', :as => 'extratos'
+  get 'extratos' => 'extracts#index', :as => 'extracts'
   get 'extracts/by_month'
   get 'extracts/by_year'
   get 'extracts/custom'
