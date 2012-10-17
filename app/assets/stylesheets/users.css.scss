@@ -1,5 +1,5 @@
 #welcome_container {
-	margin: 100px auto 0;
+	margin: 20px auto 0;
 	width: 600px;
 
 	h1 {
@@ -29,4 +29,13 @@
 
 #signup_form {
 	display: none;
+}
+
+@media screen and (min-height: 550px) {
+	#welcome_container{
+		margin: -200px 0 0 -300px;
+		left: 50%;
+		position: absolute;
+		top: 40%;
+	}
 }
