@@ -22,10 +22,25 @@
 		margin-top: 0;
 	}
 
+	.alert {
+		margin-top: 5px;
+		padding: 10px;
+	}
+	.alert:first-child {
+		margin-top: 0;
+	}
+	.alert.alert-info {
+		color: #447;
+		margin-bottom: 0;
+
+		strong {
+			color: #226;
+		}
+	}
 	.beautiful-box {
 		float: left;
-		padding: 15px;
-		width: 280px;
+		padding: 5px;
+		width: 290px;
 	}
 
 	.confirmation {
