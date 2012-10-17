@@ -10,6 +10,8 @@ Wheresmamoney::Application.routes.draw do
   get 'extracts/custom'
   get 'extracts/recent'
 
+  get 'welcome' => 'users#welcome'
+
   root :to => 'extracts#index'
 
   # The priority is based upon order of creation:

@@ -1,0 +1,9 @@
+= form_for(@user, html: { id: 'login_form' }) do |f|
+  .entry
+    = f.label :email, "E-mail"
+    = f.text_field :email
+  .entry
+    = f.label :password, "Senha"
+    = f.password_field :password
+
+  = f.submit 'Login', class: 'btn btn-primary'

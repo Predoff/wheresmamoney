@@ -1,0 +1,14 @@
+#welcome_container
+  %h1 Wheresmamoney?!
+
+  .beautiful-box espaço reservado para o bla bla bla de apresentação breve do site e imagenzinhas
+
+  #login_singnup_container
+    %ul.nav.nav-tabs
+      %li#outgoes_tab.active
+        %a{ :'data-url' => login_path } Login
+      %li#incomes_tab
+        %a{ :'data-url' => new_user_path } Novo no site?
+    .content-container 
+      = render 'login_form'
+      = render 'signup_form'

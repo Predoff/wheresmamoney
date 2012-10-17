@@ -1,3 +1,23 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#welcome_container {
+	margin: 100px auto 0;
+	width: 600px;
+
+	h1 {
+		margin-bottom: 30px;
+	}
+
+	.beautiful-box{
+		float: left;
+		height: 280px;
+		padding: 20px;
+		width: 280px;
+	}
+}
+
+
+
+#login_singnup_container {
+	float: right;
+	position: relative;
+	width: 250px;
+}

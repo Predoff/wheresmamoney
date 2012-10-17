@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def new
-		@user = User.new
+	def welcome
+		@new_user = User.new
+		@user = current_user
 	end
 
 end
