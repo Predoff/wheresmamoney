@@ -1,9 +1,9 @@
-= form_for(@user, html: { id: 'login_form' }) do |f|
+= form_tag login_path, :id => 'login_form' do |f|
   .entry
-    = f.label :email, "E-mail"
-    = f.text_field :email
+    = label_tag :email, "E-mail"
+    = text_field_tag :email
   .entry
-    = f.label :password, "Senha"
-    = f.password_field :password
+    = label_tag :password, "Senha"
+    = password_field_tag :password
 
-  = f.submit 'Login', class: 'btn btn-primary'
+  = submit_tag 'Login', class: 'btn btn-primary'

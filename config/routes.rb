@@ -12,11 +12,9 @@ Wheresmamoney::Application.routes.draw do
   get 'extracts/custom'
   get 'extracts/recent'
 
+  post 'login' => 'users#login', :as => 'login'
+  get 'logout' => 'users#logout', :as => 'logout'
   get 'welcome' => 'users#welcome'
-
-  get 'login' => 'user#login', :as => 'login'
-
-  get 'signup' => 'user#signup', :as => 'signup'
 
   root :to => 'extracts#index'
 
