@@ -21,5 +21,5 @@
     = f.text_area 'description', { rows: '2', placeholder: 'Ex.: Sanduíche muito louco' }
 
   .form-actions
-    %input.btn.btn-primary{ type: 'submit', value: 'Save' }
-    %input.btn{ type: 'reset', value: 'Clean' }
+    = f.submit 'Salvar', class: 'btn btn-primary'
+    %input.btn{ type: 'reset', value: 'Limpar' } 
