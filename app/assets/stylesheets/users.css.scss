@@ -31,11 +31,18 @@
 	display: none;
 }
 
-@media screen and (min-height: 550px) {
-	#welcome_container{
+@media screen and (min-height: 500px) {
+	#welcome_container {
 		margin: -200px 0 0 -300px;
 		left: 50%;
 		position: absolute;
 		top: 40%;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	#welcome_container {
+		margin-left: 10px;
+		left: 0;
 	}
 }
