@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
+
+  attr_accessor :password
   before_save :encrypt_password
 
   has_many :categories
@@ -15,12 +17,12 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_presence_of :name
-
+  
   def encrypt_password
-  	if password.present?
-  		self.password_salt = BCript::Engine.generate_salt
-  		self.password_hash = BCript::Engine.hash_secret(password, password_salt)
-  	end
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_digest = BCrypt::Engine.hash_secret(password, password_salt)
+    end
   end
 end
 	
