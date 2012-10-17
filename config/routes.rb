@@ -1,4 +1,6 @@
 Wheresmamoney::Application.routes.draw do
+  get "sessions/new"
+
   resources :incomes
   resources :outgoes
   resources :transactions
