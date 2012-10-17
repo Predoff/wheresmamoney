@@ -12,6 +12,10 @@ Wheresmamoney::Application.routes.draw do
 
   get 'welcome' => 'users#welcome'
 
+  get 'login' => 'user#login', :as => 'login'
+
+  get 'signup' => 'user#signup', :as => 'signup'
+
   root :to => 'extracts#index'
 
   # The priority is based upon order of creation:
