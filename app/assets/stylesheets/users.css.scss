@@ -5,6 +5,9 @@
 	h1 {
 		margin-bottom: 30px;
 	}
+	h2{
+		margin-left: 0;
+	}
 
 	.beautiful-box{
 		float: left;
@@ -12,12 +15,18 @@
 		padding: 20px;
 		width: 280px;
 	}
+
+	.confirmation {
+		display: none;
+	}
 }
-
-
 
 #login_singnup_container {
 	float: right;
 	position: relative;
 	width: 250px;
+}
+
+#signup_form {
+	display: none;
 }

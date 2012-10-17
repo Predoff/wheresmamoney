@@ -1,16 +1,16 @@
-= form_for(@new_user, html: { id: 'login_form', class: 'invisible' }) do |f|
-  %p
+= form_for(@new_user, html: { id: 'signup_form' }) do |f|
+  %h2 Cadastre-se
+  .entry
     = f.label :name, "Nome"
     = f.text_field :name
-  %p
+  .entry
     = f.label :email, "E-mail"
     = f.text_field :email
-  %p
+  .entry
     = f.label :password, "Senha"
     = f.password_field :password
-
-  %p.invisible
-    = f.label :password_confirmation, "Confirmação de senha"
+  .confirmation.entry
+    = f.label :password_confirmation, "Confirme sua senha"
     = f.password_field :password_confirmation
 
   = f.submit 'Cadastrar', class: 'btn btn-primary'
