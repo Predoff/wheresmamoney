@@ -1,5 +1,4 @@
 Wheresmamoney::Application.routes.draw do
-  resources :dashboard, :only => 'index'
   resources :incomes
   resources :outgoes
   resources :transactions
@@ -10,8 +9,6 @@ Wheresmamoney::Application.routes.draw do
   get 'extracts/by_year'
   get 'extracts/custom'
   get 'extracts/recent'
-
-  match 'cadastro' => 'users#new'
 
   root :to => 'extracts#index'
 
