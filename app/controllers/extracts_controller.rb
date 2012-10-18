@@ -1,26 +1,15 @@
 class ExtractsController < ApplicationController
   respond_to :js
   helper_method :date_to_show
-	
-  def by_month
 
+  def by_month
     transactions = current_user.transactions.by_month(date_to_show).order("date DESC")
     @incomes = transactions.income.group_by(&:date)
     @outgoes = transactions.outgo.group_by(&:date)
     @transactions = transactions.group_by(&:date)
 
-    total = 0
-    current_user.incomes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).each do |i|
-      total += i.value
-    end
-    @total_income = total
-
-    total = 0
-    current_user.outgoes.where(date: date_to_show.beginning_of_month..date_to_show.end_of_month).each do |o|
-      total += o.value
-    end
-    @total_outgo = total
-
+    @total_income = calculate_total(transactions.income)
+    @total_outgo = calculate_total(transactions.outgo)
     @total_balance = @total_income - @total_outgo
   end
 
@@ -37,24 +26,15 @@ class ExtractsController < ApplicationController
     incomes.each do |incomes_by_month|
       transactions_in_this_month = incomes_by_month.last
       date = transactions_in_this_month.first.date.beginning_of_month
-      total = 0
 
-      transactions_in_this_month.each do |transaction|
-        total += transaction.value
-      end
       @lines_to_print[date] = []
-      @lines_to_print[date][0] = total
+      @lines_to_print[date][0] = calculate_total(transactions_in_this_month)
     end
 
     outgoes.each do |outgoes_by_month|
       transactions_in_this_month = outgoes_by_month.last
       date = transactions_in_this_month.first.date.beginning_of_month
-      total = 0
-
-      transactions_in_this_month.each do |transaction|
-        total += transaction.value
-      end
-      @lines_to_print[date][1] = total
+      @lines_to_print[date][1] = calculate_total(transactions_in_this_month)
     end
 
     @total_income = 0
@@ -89,6 +69,8 @@ class ExtractsController < ApplicationController
     @transactions = transactions.limit(12).group_by(&:date)
   end
 
+private
+
   def date_to_show
     @date_to_show ||= if params[:date_action] == "previous"
       params[:date].to_date - (action_name == "by_month" ? 1.month : 1.year)
@@ -100,11 +82,19 @@ class ExtractsController < ApplicationController
       Date.current
     end
   end
+
+  def calculate_total(list_to_calculate)
+    total = 0
+    list_to_calculate.each do |i|
+      total += i.value
+    end
+    total
+  end
 end
 
 # Examinar se se aplica ao meu sistema esse tipo de funcionalidade e implementar
 #
-# if stale? (:etag => [objeto1, objeto2]) 
+# if stale? (:etag => [objeto1, objeto2])
 # (:last_modified => objeto.updated_at.udt)
 #
 # (:etag => objetoactiverecord_que eu quero saber se mudou alguma coisa ou não)
